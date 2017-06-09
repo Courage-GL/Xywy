@@ -9,6 +9,9 @@ import android.widget.RadioButton;
 
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseActivity;
+import com.example.abner.xywy_net.base.BaseFragment;
+import com.example.abner.xywy_net.base.FragmentBuilder;
+import com.example.abner.xywy_net.controller.fragment.PersonaFragment;
 import com.example.abner.xywy_net.utils.netutils.ForNet;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
@@ -48,7 +51,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.MainActivity_Button1:
 
+                break;
+            case R.id.MainActivity_Button2:
+                break;
+            case R.id.MainActivity_Button3:
+             FragmentBuilder.getInstance(MainActivity.this).startFragment(PersonaFragment.class).addFragment(R.id.MainActivity_FrameLayout).builder();
+                break;
+            default:
+                break;
+        }
 
     }
 }

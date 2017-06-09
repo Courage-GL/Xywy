@@ -56,6 +56,7 @@ public class FragmentBuilder {
                 e.printStackTrace();
             }
         } else {
+
             baseFragment = (BaseFragment) fragmentManager.findFragmentByTag(simpleName);
         }
 
