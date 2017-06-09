@@ -5,6 +5,8 @@ package com.example.abner.xywy_net.utils.netutils;
  */
 
 public interface MyCallBack {
+
     void OnSuccess(String result);
     void OnError(String errorMsg);
+
 }

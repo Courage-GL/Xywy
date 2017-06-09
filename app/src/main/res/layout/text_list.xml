@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/myTitle"
+        layout="@layout/title_bar"></include>
+    <include
+        android:id="text_title"
+        layout="@layout/text_title"
+        ></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="480px"
+        android:orientation="vertical">
+        <include
+            layout="@layout/text_list_item"></include>
+    </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="13px"
+        android:background="@color/colorGray"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="137px"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_gravity="center">
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/doctor_online"
+                android:layout_marginTop="13px"
+                android:layout_gravity="center"
+                android:layout_marginBottom="13px"/>
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="免费问医生"
+                android:textSize="30px"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorTexts" />
+        </LinearLayout>
+<ImageView
+    android:layout_width="0.5dp"
+    android:layout_height="137px"
+    android:background="@color/colorLineV"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_gravity="center">
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/doctor_phone"
+                android:layout_marginTop="13px"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="13px"/>
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="健康顾问"
+                android:textSize="30px"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorTexts" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="15px"
+        android:background="@color/colorGray"/>
+
+
+</LinearLayout>
