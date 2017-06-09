@@ -11,5 +11,4 @@ import com.example.abner.xywy_net.base.BaseFragment;
 
 public class App extends Application {
     public static BaseFragment lastFragment;
-    public static BaseActivity activity;
 }

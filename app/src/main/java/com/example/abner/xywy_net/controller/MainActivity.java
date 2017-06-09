@@ -12,6 +12,7 @@ import com.example.abner.xywy_net.base.BaseActivity;
 import com.example.abner.xywy_net.base.BaseFragment;
 import com.example.abner.xywy_net.base.FragmentBuilder;
 import com.example.abner.xywy_net.controller.fragment.PersonaFragment;
+import com.example.abner.xywy_net.controller.fragment.XueYaGuanliFragment;
 import com.example.abner.xywy_net.utils.netutils.ForNet;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
@@ -56,6 +57,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
                 break;
             case R.id.MainActivity_Button2:
+                FragmentBuilder.getInstance(MainActivity.this).startFragment(XueYaGuanliFragment.class).addFragment(R.id.MainActivity_FrameLayout).builder();
                 break;
             case R.id.MainActivity_Button3:
              FragmentBuilder.getInstance(MainActivity.this).startFragment(PersonaFragment.class).addFragment(R.id.MainActivity_FrameLayout).builder();

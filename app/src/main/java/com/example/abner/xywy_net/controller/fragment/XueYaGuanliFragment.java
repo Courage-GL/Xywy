@@ -2,6 +2,7 @@ package com.example.abner.xywy_net.controller.fragment;
 
 import android.view.View;
 
+import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseFragment;
 
 /**
@@ -11,7 +12,7 @@ import com.example.abner.xywy_net.base.BaseFragment;
 public class XueYaGuanliFragment extends BaseFragment {
     @Override
     protected int layoutId() {
-        return 0;
+        return R.layout.fragmnet_xueyaguanli;
     }
 
     @Override

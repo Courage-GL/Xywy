@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+    <color name="colorGrays">#B4B4B4</color>
+    <color name="colorBlack">#333333</color>
+    <color name="colorGraya">#CCCCCC</color>
+    <color name="colorLine">#ECECEC</color>
+    <color name="colorText">#D0D0D0</color>
+    <color name="colorBack">#4CBF5B</color>
+    <color name="colorLineV">#E7E6E6</color>
+    <color name="colorTexts">#999999</color>
+    <color name="colorName">#737373</color>
+
+
+
+    <color name="colorBlue">#3F51B5</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray">#cccccc</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
@@ -145,6 +162,6 @@
     <color name="grassgreen">#99cc33</color><!--草绿色 -->
     <color name="gray_cc">#cccccc</color><!--灰色cc -->
     <color name="gray_8f">#8f8f8f</color><!--灰色8f -->
-    <color name="green1">#5ac667</color><!--灰色cc -->
-    <color name="blank1">#3a3a3a</color><!--灰色8f -->
+    <color name="green1">#5ac667</color>
+    <color name="blank1">#3a3a3a</color>
 </resources>

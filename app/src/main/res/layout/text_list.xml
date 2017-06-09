@@ -7,7 +7,6 @@
         android:id="@+id/myTitle"
         layout="@layout/title_bar"></include>
     <include
-        android:id="text_title"
         layout="@layout/text_title"
         ></include>
 
