@@ -28,7 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract int layoutId();
 
     //初始化数据
-    protected abstract void initView();
+    protected abstract void initView() throws InterruptedException;
 
     //加载数据
     protected abstract void loadData();
