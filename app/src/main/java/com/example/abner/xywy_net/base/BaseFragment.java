@@ -24,9 +24,10 @@ public abstract class BaseFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
-        loadData();
         initListener();
+
     }
+
 
     //指定布局
     protected abstract int layoutId();
@@ -50,6 +51,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        loadData();
     }
 
     @Override

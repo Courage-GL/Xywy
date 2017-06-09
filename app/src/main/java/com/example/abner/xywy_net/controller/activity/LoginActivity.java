@@ -1,26 +1,20 @@
 package com.example.abner.xywy_net.controller.activity;
 
-import android.content.Intent;
-import android.widget.TextView;
-
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseActivity;
-import com.example.abner.xywy_net.controller.MainActivity;
 
 /**
- * Created by Abner on 2017/6/9.
+ * Created by 张萌 on 2017/6/9.
  */
 
-public class SplashActivity extends BaseActivity {
+public class LoginActivity  extends BaseActivity {
     @Override
     protected int layoutId() {
-        return R.layout.activity_splash;
+        return R.layout.activity_login;
     }
 
     @Override
     protected void initView()  {
-
-
 
     }
 
@@ -31,7 +25,6 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void loadData() {
-
 
     }
 

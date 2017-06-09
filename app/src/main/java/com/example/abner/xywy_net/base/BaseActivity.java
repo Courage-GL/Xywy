@@ -20,15 +20,22 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(layoutId());
         initView();
-        loadData();
+        initData();
         initListener();
+
     }
+
+
+
 
     //指定布局
     protected abstract int layoutId();
 
+    //初始化布局
+    protected abstract void initView();
+
     //初始化数据
-    protected abstract void initView() throws InterruptedException;
+    protected abstract void initData();
 
     //加载数据
     protected abstract void loadData();
@@ -47,6 +54,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        loadData();
     }
     //activity activity停止的时候
     @Override
