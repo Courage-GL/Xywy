@@ -25,12 +25,51 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+          <EditText
+              android:id="@+id/logon_phone"
+              android:hint="请输入手机"
+              android:layout_marginLeft="5dp"
+              android:layout_centerVertical="true"
+              android:textSize="18sp"
+              android:background="@null"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></RelativeLayout>
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/login_password"
+                android:hint="请输入密码"
+                android:background="@null"
+                android:layout_marginLeft="5dp"
+                android:layout_centerVertical="true"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/forgetpassword"
+        android:text="忘记密码"
+        android:textSize="16sp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#0edf2b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/login_button"
+        android:text="登录"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:background="#4ebf5e"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
 </LinearLayout>

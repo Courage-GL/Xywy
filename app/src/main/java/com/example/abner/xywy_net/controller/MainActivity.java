@@ -1,9 +1,5 @@
 package com.example.abner.xywy_net.controller;
 
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
@@ -12,7 +8,7 @@ import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseActivity;
 import com.example.abner.xywy_net.base.FragmentBuilder;
 import com.example.abner.xywy_net.controller.fragment.DoctorFragment;
-import com.example.abner.xywy_net.controller.fragment.PersonaFragment;
+import com.example.abner.xywy_net.controller.fragment.zxm.PersonaFragment;
 import com.example.abner.xywy_net.controller.fragment.XueYaGuanliFragment;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
