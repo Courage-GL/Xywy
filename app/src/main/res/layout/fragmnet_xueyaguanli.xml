@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <LinearLayout
-        android:background="@color/green"
+        android:background="@color/green1"
         android:layout_width="match_parent"
         android:layout_height="50dp">
         <TextView
@@ -23,6 +23,7 @@
         android:layout_height="0dp"
         android:layout_weight="2">
         <TextView
+            android:textColor="@color/gray"
             android:gravity="center"
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -32,11 +33,11 @@
             android:text="请及时记录你的血压数据"
           />
         <ImageView
+            android:id="@+id/updateData"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:src="@drawable/upload_bp_data"/>
-
 
     </LinearLayout>
 
@@ -47,59 +48,111 @@
         android:layout_height="0dp"
         android:background="@drawable/shape"
         >
-        <TextView
+        <RadioGroup
+            android:layout_weight="1"
+            android:weightSum="4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+        <RadioButton
+            android:id="@+id/text_Button1"
+            android:button="@null"
+            android:checked="true"
             android:text="日"
             android:textColor="@drawable/text_selector"
-            android:background="@drawable/backgroud_selector"
-            android:layout_weight="1"
             android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_height="match_parent" />
-        <TextView
-            android:background="@color/black"
-            android:layout_width="1dp"
-            android:layout_height="match_parent" />
-        <TextView
-            android:textColor="@drawable/text_selector"
-            android:background="@drawable/backgroud_selector"
-            android:text="周"
             android:layout_weight="1"
-            android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_height="match_parent" />
-        <TextView
-            android:background="@color/black"
-            android:layout_width="1dp"
-            android:layout_height="match_parent" />
-        <TextView
-            android:textColor="@drawable/text_selector"
-            android:background="@drawable/backgroud_selector"
-            android:text="月"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_height="match_parent" />
-        <TextView
-            android:background="@color/black"
-            android:layout_width="1dp"
-            android:layout_height="match_parent" />
-        <TextView
-            android:textColor="@drawable/text_selector"
-            android:background="@drawable/backgroud_selector"
-            android:text="年"
-            android:layout_weight="1"
-            android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="match_parent" />
 
+            <TextView
+                android:background="@color/black"
+                android:layout_width="1dp"
+                android:layout_height="match_parent" />
+
+        <RadioButton
+            android:id="@+id/text_Button2"
+            android:button="@null"
+            android:text="周"
+            android:textColor="@drawable/text_selector"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+            <TextView
+                android:background="@color/black"
+                android:layout_width="1dp"
+                android:layout_height="match_parent" />
+        <RadioButton
+            android:id="@+id/text_Button3"
+            android:button="@null"
+            android:text="月"
+            android:textColor="@drawable/text_selector"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+            <TextView
+                android:background="@color/black"
+                android:layout_width="1dp"
+                android:layout_height="match_parent" />
+            <RadioButton
+                android:id="@+id/text_Button4"
+                android:button="@null"
+                android:text="年"
+                android:textColor="@drawable/text_selector"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+    </RadioGroup>
     </LinearLayout>
+
+
     <LinearLayout
         android:layout_weight="3"
         android:layout_width="match_parent"
-        android:layout_height="0dp"></LinearLayout>
-    <LinearLayout
-        android:layout_weight="2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"></LinearLayout>
+        android:layout_height="0dp">
+2
 
+
+    </LinearLayout>
+    <RadioGroup
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:weightSum="3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/askDoctor_Btn"
+            android:button="@null"
+            android:checked="true"
+            android:text="问医生"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ask_doctor_icon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:id="@+id/message_Btn"
+            android:button="@null"
+            android:text="资讯"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/news_icon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <RadioButton
+            android:id="@+id/alarm_Btn"
+            android:button="@null"
+            android:text="提醒"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/remind_icon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </RadioGroup>
 </LinearLayout>
