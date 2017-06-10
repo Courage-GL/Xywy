@@ -72,6 +72,7 @@
 
         <TextView
             android:text="女"
+            android:id="@+id/sexText"
             android:layout_marginRight="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"

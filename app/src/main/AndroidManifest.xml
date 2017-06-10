@@ -36,7 +36,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".controller.MainActivity"/>
-        <activity android:name=".controller.activity.LoginActivity"/>
         <activity android:name=".controller.activity.DoctorActivity"></activity>
         <activity android:name=".controller.activity.zxm.Test"/>
         <activity android:name=".controller.activity.zxm.ZiliaoActivity"/>
