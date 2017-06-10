@@ -91,6 +91,8 @@ public class PersonaFragment  extends BaseFragment implements OnClickListener{
             case R.id.person_begin:
                 Intent intent5=new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent5);
+
+
                 break;
         }
     }
