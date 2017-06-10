@@ -4,6 +4,8 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -29,11 +31,16 @@ public class ZiliaoActivity  extends BaseActivity implements View.OnClickListene
     @Override
     protected void initView() {
      name= (RelativeLayout) findViewById(R.id.name);
+        name.setOnClickListener(this);
         sex= (RelativeLayout) findViewById(R.id.sex);
+        sex.setOnClickListener(this);
         sexText= (TextView) findViewById(R.id.sexText);
         height= (RelativeLayout) findViewById(R.id.height);
+        height.setOnClickListener(this);
         weight= (RelativeLayout) findViewById(R.id.weight);
+        weight.setOnClickListener(this);
         birthday= (RelativeLayout) findViewById(R.id.birthday);
+        birthday.setOnClickListener(this);
     }
 
     @Override
@@ -104,7 +111,7 @@ public class ZiliaoActivity  extends BaseActivity implements View.OnClickListene
      * dialog_customize.xml可自定义更复杂的View
      */
         AlertDialog.Builder customizeDialog =
-                new AlertDialog.Builder(getContext());
+                new AlertDialog.Builder(ZiliaoActivity.this);
         final View dialogView = LayoutInflater.from(ZiliaoActivity.this)
                 .inflate(R.layout.dialog_chooseheight,null);
         customizeDialog.setTitle("选择身高");
@@ -117,6 +124,29 @@ public class ZiliaoActivity  extends BaseActivity implements View.OnClickListene
                     }
                 });
         customizeDialog.show();
+    }
+
+
+    class HeightAdapter  extends BaseAdapter{
+        @Override
+        public int getCount() {
+            return 0;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            return null;
+        }
     }
 
 
