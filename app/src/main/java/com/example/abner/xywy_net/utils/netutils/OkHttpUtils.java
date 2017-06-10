@@ -1,5 +1,7 @@
 package com.example.abner.xywy_net.utils.netutils;
 
+import com.example.abner.xywy_net.App;
+
 import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
@@ -54,15 +56,28 @@ public  class OkHttpUtils {
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(Call call, final IOException e) {
+                App.baseActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
 
-                callBack.OnError(getClass().getName()+"get"+e.getMessage());
+                        callBack.OnError(getClass().getName()+"get"+e.getMessage());
+                    }
+                });
+
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                String result=response.body().string();
-                callBack.OnSuccess(result);
+                final String result=response.body().string();
+                App.baseActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        callBack.OnSuccess(result);
+                    }
+                });
+
             }
         });
     }

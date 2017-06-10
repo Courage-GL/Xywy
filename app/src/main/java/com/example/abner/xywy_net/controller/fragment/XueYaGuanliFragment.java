@@ -1,5 +1,6 @@
 package com.example.abner.xywy_net.controller.fragment;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -7,6 +8,8 @@ import android.widget.RadioButton;
 
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseFragment;
+import com.example.abner.xywy_net.controller.activity.AskDoctorActivity;
+import com.example.abner.xywy_net.controller.activity.UpDataActivity;
 
 /**
  * Created by Abner on 2017/6/9.
@@ -57,8 +60,10 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.updateData:
+                startActivity(new Intent(getActivity(), UpDataActivity.class));
                 break;
             case R.id.text_Button1:
+
                 break;
             case R.id.text_Button2:
                 break;
@@ -67,6 +72,7 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
             case R.id.text_Button4:
                 break;
             case R.id.askDoctor_Btn:
+                startActivity(new Intent(getActivity(), AskDoctorActivity.class));
                 break;
             case R.id.message_Btn:
                 break;

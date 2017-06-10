@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/green1">
+        <ImageView
+            android:layout_centerVertical="true"
+            android:src="@mipmap/back_img"
+            android:id="@+id/update_back"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:text="免费提问"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+    <TextView
+        android:layout_margin="10dp"
+        android:text="请简单描述您的病情并提交给我们的客服。客服人员会安排专业的健康顾问向您致电，为阁下进行专业的电话健康指导"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minLines="2"/>
+    <LinearLayout
+
+       android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/shape"
+        android:orientation="vertical">
+    <EditText
+        android:id="@+id/askDocotor_Editext"
+
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp"
+        android:gravity="top|left"
+        android:hint="请尽量详细描述，描述字数不得少于10个字。"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/white"
+        />
+        <RelativeLayout
+
+            android:layout_marginLeft="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginRight="2dp"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/add_questin_img" />
+
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:text="0/500"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <RadioGroup
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <RadioButton
+                android:id="@+id/MainActivity_Button1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:background="@drawable/backgroud1_selector"
+                android:gravity="center"
+                android:text="男" />
+
+            <RadioButton
+                android:id="@+id/MainActivity_Button2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/backgroud1_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="女" />
+
+        </RadioGroup>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:hint="年龄"
+            android:numeric="integer" />
+    </LinearLayout>
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:text="提交数据"
+        android:textColor="@color/white"
+        android:background="@color/green1"
+        />
+</LinearLayout>

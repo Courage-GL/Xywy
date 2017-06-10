@@ -29,6 +29,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
+        FragmentBuilder.getInstance(this).startFragment(DoctorFragment.class).addFragment(R.id.MainActivity_FrameLayout).builder();
     }
 
     @Override
@@ -51,7 +52,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         switch (v.getId()){
             case R.id.MainActivity_Button1:
                 FragmentBuilder.getInstance(this).startFragment(DoctorFragment.class).addFragment(R.id.MainActivity_FrameLayout).builder();
-                break;
+            break;
             case R.id.MainActivity_Button2:
                 FragmentBuilder.getInstance(MainActivity.this).startFragment(XueYaGuanliFragment.class).addFragment(R.id.MainActivity_FrameLayout).builder();
                 break;
@@ -59,6 +60,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
              FragmentBuilder.getInstance(MainActivity.this).startFragment(PersonaFragment.class).addFragment(R.id.MainActivity_FrameLayout).builder();
                 break;
             default:
+                FragmentBuilder.getInstance(this).startFragment(DoctorFragment.class).addFragment(R.id.MainActivity_FrameLayout).builder();
                 break;
         }
 
