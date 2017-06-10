@@ -21,7 +21,7 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
 
     private ImageView updataImage;
     private RadioButton textBtn1,textBtn2,textBtn3,textBtn4,askDoctorBtn,messageBtn,alarmBtn;
-
+//
 
     @Override
     protected int layoutId() {
