@@ -11,6 +11,7 @@ import com.example.abner.xywy_net.R;
  */
 public class ForNet
 {
+    //
 
     public static boolean getNetState(Context ctx)
     {

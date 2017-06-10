@@ -18,7 +18,7 @@ import com.example.abner.xywy_net.controller.fragment.XueYaGuanliFragment;
 public class MainActivity extends BaseActivity implements View.OnClickListener{
     private FrameLayout frameLayout;
     private RadioButton button1,button2,button3;
-
+    //
     @Override
     protected int layoutId() {
         return R.layout.activity_main;

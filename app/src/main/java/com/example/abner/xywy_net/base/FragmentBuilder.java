@@ -11,6 +11,7 @@ import com.example.abner.xywy_net.App;
  *
  */
 public class FragmentBuilder {
+    //
     private BaseFragment baseFragment;
     private FragmentManager fragmentManager;
     private static FragmentBuilder fragmentBuilder;

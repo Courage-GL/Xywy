@@ -15,7 +15,7 @@ import java.util.Map;
 
 
 public class ViewHolder {
-
+    //
     //ViewHolder只需要创建一个对象 所以该ViewHolder是单例的
 
     //加载的item布局

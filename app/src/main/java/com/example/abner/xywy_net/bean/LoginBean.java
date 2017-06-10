@@ -6,7 +6,7 @@ package com.example.abner.xywy_net.bean;
 
 public class LoginBean {
 
-
+    //
     /**
      * state : 200
      * userid : 116928090

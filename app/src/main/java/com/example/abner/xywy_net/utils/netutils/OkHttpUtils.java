@@ -18,6 +18,7 @@ import okhttp3.Response;
  * Created by Abner on 2017/6/9.
  */
 
+//
 public  class OkHttpUtils {
     private OkHttpClient client;
     private static OkHttpUtils okHttpUtils;
