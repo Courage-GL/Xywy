@@ -9,12 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="100dp">
      <ImageView
-         android:id="@+id/personal_icon"
+         android:id="@+id/personal_icon111"
          android:src="@mipmap/ic_launcher"
          android:layout_width="50dp"
          android:layout_height="50dp" />
 
         <TextView
+            android:id="@+id/idText"
             android:text="id232323232"
             android:textColor="#fff"
             android:layout_marginTop="10dp"

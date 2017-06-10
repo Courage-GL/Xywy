@@ -1,8 +1,12 @@
 package com.example.abner.xywy_net.controller;
 
+import android.os.Handler;
+import android.os.Message;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseActivity;
@@ -64,5 +68,46 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 break;
         }
 
+    }
+
+
+    private static boolean isExit = false;
+
+    private final int BACK = 0;
+
+    private Handler mHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == 0) {
+                isExit = false;
+            }
+        }
+    };
+
+    public void exit() {
+        if (!isExit) {
+            isExit = true;
+            Toast.makeText(MainActivity.this, "再次点击退出程序",
+                    Toast.LENGTH_SHORT).show();
+            // 利用handler延迟发送更改状态信息
+            mHandler.sendEmptyMessageDelayed(BACK, 2000);
+        } else {
+            finish();
+            System.exit(0);
+        }
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        return super.onKeyDown(keyCode, event);
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+           exit();
+            return false;
+
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

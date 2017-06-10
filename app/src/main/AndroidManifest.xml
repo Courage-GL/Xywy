@@ -49,6 +49,7 @@
         <activity android:name=".controller.activity.zxm.JiahaoActivity"/>
         <activity android:name=".controller.activity.zxm.baidumap.LocationOption"/>
         <activity android:name=".controller.activity.zxm.MessageActivity"/>
+        <activity android:name=".controller.activity.zxm.CityActivity"/>
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="1Lolm7ayig7lcEhimXUUtlEwnzzPhhSx" />     <!--  //key:开发者申请的Key-->

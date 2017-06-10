@@ -12,6 +12,7 @@
         android:gravity="center_vertical"
         android:id="@+id/re">
         <LinearLayout
+            android:id="@+id/choose_city"
             android:layout_weight="1"
             android:clickable="true"
             android:background="@drawable/find_selector_layout"
@@ -21,6 +22,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/main_loc_meaage"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

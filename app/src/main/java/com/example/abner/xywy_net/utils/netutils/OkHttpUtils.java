@@ -22,7 +22,7 @@ public  class OkHttpUtils {
     private OkHttpClient client;
     private static OkHttpUtils okHttpUtils;
 
-    private OkHttpUtils(){
+    public OkHttpUtils(){
 
         client=new OkHttpClient();
     }
@@ -57,7 +57,7 @@ public  class OkHttpUtils {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, final IOException e) {
-                App.baseActivity.runOnUiThread(new Runnable() {
+                App.activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
 
@@ -70,7 +70,7 @@ public  class OkHttpUtils {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final String result=response.body().string();
-                App.baseActivity.runOnUiThread(new Runnable() {
+                App.activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
 
@@ -82,7 +82,7 @@ public  class OkHttpUtils {
         });
     }
 
-    private void post(String url, Map<String,String> map, final MyCallBack callBack){
+    public void post(String url, Map<String,String> map, final MyCallBack callBack){
         if(url==null){
             return;
         }

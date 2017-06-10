@@ -17,7 +17,7 @@
            layout="@layout/activity_afterlogin"/>
    </LinearLayout>
     <RelativeLayout
-        android:id="@+id/personal_jiahao"
+        android:id="@+id/personal_jiahao111"
         android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="40dp">
@@ -49,7 +49,7 @@
         android:layout_height="0.1dp" />
 
     <RelativeLayout
-        android:id="@+id/personal_like"
+        android:id="@+id/personal_like111"
         android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="40dp">
@@ -82,7 +82,7 @@
 
 
     <RelativeLayout
-        android:id="@+id/personal_detail"
+        android:id="@+id/personal_detail111"
         android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="40dp">
@@ -114,7 +114,7 @@
         android:layout_height="0.1dp" />
 
     <RelativeLayout
-        android:id="@+id/personal_messgae"
+        android:id="@+id/personal_messgae111"
         android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="40dp">
@@ -148,7 +148,7 @@
 
 
     <RelativeLayout
-        android:id="@+id/personal_set"
+        android:id="@+id/personal_set111"
         android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="40dp">

@@ -38,6 +38,7 @@
 
         <TextView
             android:text="张晓萌"
+            android:id="@+id/nameText"
             android:layout_marginRight="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
@@ -106,6 +107,7 @@
 
         <TextView
             android:text="168"
+            android:id="@+id/heightText"
             android:layout_marginRight="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
@@ -173,6 +175,7 @@
 
         <TextView
             android:text="1990-01-01"
+            android:id="@+id/birthText"
             android:layout_marginRight="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"

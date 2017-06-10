@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Layout;
 import android.view.View;
 
+import com.example.abner.xywy_net.App;
 import com.example.abner.xywy_net.R;
 
 /**
@@ -19,6 +20,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layoutId());
+        App.activity=this;
         initView();
         initData();
         initListener();

@@ -14,5 +14,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"></ListView>
         </ScrollView>
+
     </LinearLayout>
+    <Button
+        android:text="确定"
+        android:id="@+id/dialog_sure"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
 </LinearLayout>
