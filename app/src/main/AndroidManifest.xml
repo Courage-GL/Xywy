@@ -40,6 +40,7 @@
         <activity android:name=".controller.activity.UpDataActivity"/>
         <activity android:name=".controller.activity.AskDoctorActivity"/>
         <activity android:name=".controller.activity.FreeAskActivity"/>
+        <activity android:name=".controller.activity.XueYaZiXunActivity"/>
         <activity android:name=".controller.activity.zxm.Test"/>
         <activity android:name=".controller.activity.zxm.ZiliaoActivity"/>
         <activity android:name=".controller.activity.zxm.baidumap.LocationActivity"/>

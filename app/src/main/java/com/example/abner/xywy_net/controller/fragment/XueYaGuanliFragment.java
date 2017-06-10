@@ -10,6 +10,8 @@ import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseFragment;
 import com.example.abner.xywy_net.controller.activity.AskDoctorActivity;
 import com.example.abner.xywy_net.controller.activity.UpDataActivity;
+import com.example.abner.xywy_net.controller.activity.XueYaZiXunActivity;
+import com.example.abner.xywy_net.controller.activity.zxm.MessageActivity;
 
 /**
  * Created by Abner on 2017/6/9.
@@ -63,7 +65,6 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
                 startActivity(new Intent(getActivity(), UpDataActivity.class));
                 break;
             case R.id.text_Button1:
-
                 break;
             case R.id.text_Button2:
                 break;
@@ -75,6 +76,7 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
                 startActivity(new Intent(getActivity(), AskDoctorActivity.class));
                 break;
             case R.id.message_Btn:
+                startActivity(new Intent(getActivity(), XueYaZiXunActivity.class));
                 break;
             case R.id.alarm_Btn:
                 break;

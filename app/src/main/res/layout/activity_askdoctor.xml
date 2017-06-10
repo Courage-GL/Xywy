@@ -3,27 +3,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/green1">
+
         <ImageView
-            android:layout_centerVertical="true"
-            android:src="@mipmap/back_img"
-            android:id="@+id/update_back"
+            android:id="@+id/askdoctor_back"
             android:layout_width="50dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/back_img" />
+
         <TextView
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:text="问医生"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="问医生"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
     </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/askDoctor_LinearLayout"
         android:gravity="center"
