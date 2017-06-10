@@ -4,14 +4,15 @@
 
     <color name="colorGrays">#B4B4B4</color>
     <color name="colorBlack">#333333</color>
-    <color name="colorGraya">#CCCCCC</color>
+    <color name="colorGraya">#ffffff</color>
     <color name="colorLine">#ECECEC</color>
     <color name="colorText">#D0D0D0</color>
-    <color name="colorBack">#4CBF5B</color>
-    <color name="colorLineV">#E7E6E6</color>
+    <color name="colorBack">#02c25f</color>
+    <color name="colorBackground">#fcf8f3</color>
+    <color name="colorLineV">#fcf8f3</color>
     <color name="colorTexts">#999999</color>
     <color name="colorName">#737373</color>
-
+    <color name="gray_bg1">#ebebeb</color>
 
 
     <color name="colorBlue">#3F51B5</color>
@@ -22,7 +23,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="transparent">#00000000</color><!--透明色 -->
     <color name="white">#FFFFFF</color><!--白色 -->
-    <color name="ivory">#FFFFF0</color><!--象牙色 -->
+    <color name="ivory">#edecea</color><!--象牙色 -->
     <color name="lightyellow">#FFFFE0</color><!--亮黄色 -->
     <color name="yellow">#FFFF00</color><!--黄色 -->
     <color name="snow">#FFFAFA</color><!--雪白色 -->
@@ -57,14 +58,14 @@
     <color name="antiquewhite">#FAEBD7</color><!--古董白 -->
     <color name="salmon">#FA8072</color><!--鲜肉色 -->
     <color name="ghostwhite">#F8F8FF</color><!--幽灵白 -->
-    <color name="mintcream">#F5FFFA</color><!--薄荷色 -->
+    <color name="mintcream">#ffffff</color><!--薄荷色 -->
     <color name="whitesmoke">#F5F5F5</color><!--烟白色 -->
     <color name="beige">#F5F5DC</color><!--米色 -->
     <color name="wheat">#F5DEB3</color><!--浅黄色 -->
     <color name="sandybrown">#F4A460</color><!--沙褐色 -->
     <color name="azure">#F0FFFF</color><!--天蓝色 -->
     <color name="honeydew">#F0FFF0</color><!--蜜色 -->
-    <color name="aliceblue">#F0F8FF</color><!--艾利斯兰 -->
+    <color name="aliceblue">#edecea</color><!--艾利斯兰 -->
     <color name="khaki">#F0E68C</color><!--黄褐色 -->
     <color name="lightcoral">#F08080</color><!--亮珊瑚色 -->
     <color name="palegoldenrod">#EEE8AA</color><!--苍麒麟色 -->
@@ -136,7 +137,7 @@
     <color name="royalblue">#4169E1</color><!--皇家蓝 -->
     <color name="turquoise">#40E0D0</color><!--青绿色 -->
     <color name="mediumseagreen">#3CB371</color><!--中海蓝 -->
-    <color name="limegreen">#32CD32</color><!--橙绿色 -->
+    <color name="limegreen">#02c25f</color><!--橙绿色 -->
     <color name="darkslategray">#2F4F4F</color><!--暗瓦灰色 -->
     <color name="seagreen">#2E8B57</color><!--海绿色 -->
     <color name="forestgreen">#228B22</color><!--森林绿 -->

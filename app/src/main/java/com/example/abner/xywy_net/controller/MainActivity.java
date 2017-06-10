@@ -1,6 +1,7 @@
 package com.example.abner.xywy_net.controller;
 
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,11 +10,10 @@ import android.widget.RadioButton;
 
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseActivity;
-import com.example.abner.xywy_net.base.BaseFragment;
 import com.example.abner.xywy_net.base.FragmentBuilder;
+import com.example.abner.xywy_net.controller.fragment.DoctorFragment;
 import com.example.abner.xywy_net.controller.fragment.PersonaFragment;
 import com.example.abner.xywy_net.controller.fragment.XueYaGuanliFragment;
-import com.example.abner.xywy_net.utils.netutils.ForNet;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
     private FrameLayout frameLayout;
@@ -54,7 +54,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.MainActivity_Button1:
-
+                FragmentBuilder.getInstance(this).startFragment(DoctorFragment.class).addFragment(R.id.MainActivity_FrameLayout).builder();
                 break;
             case R.id.MainActivity_Button2:
                 FragmentBuilder.getInstance(MainActivity.this).startFragment(XueYaGuanliFragment.class).addFragment(R.id.MainActivity_FrameLayout).builder();

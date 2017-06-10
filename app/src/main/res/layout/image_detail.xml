@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image_dc"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@color/aqua"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/name_dc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/image_dc"
+        android:text="说谎"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/address_dc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="华盛顿是多"
+        android:textSize="12sp"
+        android:textColor="@color/colorText"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/name_dc"
+        android:layout_marginLeft="8dp"/>
+
+    <TextView
+        android:id="@+id/work_dc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主任医师"
+        android:textColor="@color/colorTexts"
+        android:textSize="14sp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/image_dc"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/jineng_dc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="心血管内科"
+        android:textColor="@color/colorTexts"
+        android:textSize="14sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/work_dc"/>
+
+    <TextView
+        android:id="@+id/zhiwei_dc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="教授"
+        android:textColor="@color/colorTexts"
+        android:textSize="14sp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@+id/jineng_dc"/>
+
+    <TextView
+        android:id="@+id/text_dc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/image_dc"
+        android:textColor="@color/colorName"
+        android:text="数据的覅时代伏虎寺和尿胆素地府阿富汗刷个啊师父的话合法技术档案"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginTop="90dp"
+        android:src="@color/aliceblue"/>
+
+</RelativeLayout>
+
