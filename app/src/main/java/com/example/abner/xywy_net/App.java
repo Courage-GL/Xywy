@@ -3,6 +3,7 @@ package com.example.abner.xywy_net;
 import android.app.Application;
 import android.app.Service;
 import android.os.Vibrator;
+import android.view.Window;
 
 import com.baidu.mapapi.SDKInitializer;
 import com.example.abner.xywy_net.base.BaseActivity;
@@ -21,6 +22,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         /***
          * 初始化定位sdk，建议在Application中创建
          */

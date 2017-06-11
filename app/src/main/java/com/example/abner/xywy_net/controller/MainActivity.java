@@ -1,5 +1,6 @@
 package com.example.abner.xywy_net.controller;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.view.KeyEvent;
@@ -14,6 +15,8 @@ import com.example.abner.xywy_net.base.FragmentBuilder;
 import com.example.abner.xywy_net.controller.fragment.DoctorFragment;
 import com.example.abner.xywy_net.controller.fragment.zxm.PersonaFragment;
 import com.example.abner.xywy_net.controller.fragment.XueYaGuanliFragment;
+
+import java.util.List;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
     private FrameLayout frameLayout;
@@ -44,6 +47,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     protected void loadData() {
 
+        Intent intent=getIntent();
+        String id = intent.getStringExtra("id");
+        if("2".equals(id)){
+
+            FragmentBuilder.getInstance(MainActivity.this).startFragment(XueYaGuanliFragment.class).addFragment(R.id.MainActivity_FrameLayout).builder();
+        }
     }
 
     @Override
@@ -110,4 +119,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         }
         return super.onKeyDown(keyCode, event);
     }
+    public void getParam(){
+
+
+
+    }
+
 }

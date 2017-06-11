@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Layout;
 import android.view.View;
+import android.view.Window;
 
 import com.example.abner.xywy_net.App;
 import com.example.abner.xywy_net.R;
@@ -24,7 +25,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         initView();
         initData();
         initListener();
-
     }
 
 

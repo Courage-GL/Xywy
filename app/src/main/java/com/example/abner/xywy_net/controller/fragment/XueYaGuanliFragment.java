@@ -2,16 +2,15 @@ package com.example.abner.xywy_net.controller.fragment;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseFragment;
+import com.example.abner.xywy_net.bluetooth.ClientActivity;
 import com.example.abner.xywy_net.controller.activity.AskDoctorActivity;
 import com.example.abner.xywy_net.controller.activity.UpDataActivity;
 import com.example.abner.xywy_net.controller.activity.XueYaZiXunActivity;
-import com.example.abner.xywy_net.controller.activity.zxm.MessageActivity;
 
 /**
  * Created by Abner on 2017/6/9.
@@ -20,14 +19,12 @@ import com.example.abner.xywy_net.controller.activity.zxm.MessageActivity;
 public class XueYaGuanliFragment extends BaseFragment implements View.OnClickListener{
 
     private ImageView updataImage;
-    private RadioButton textBtn1,textBtn2,textBtn3,textBtn4,askDoctorBtn,messageBtn,alarmBtn;
+    private RadioButton textBtn1,textBtn2,textBtn3,textBtn4,askDoctorBtn,messageBtn,alarmBtn,bluetoothBtn;
 //
-
     @Override
     protected int layoutId() {
         return R.layout.fragmnet_xueyaguanli;
     }
-
     @Override
     protected void initView(View view) {
         updataImage= (ImageView) view.findViewById(R.id.updateData);
@@ -38,6 +35,7 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
         askDoctorBtn= (RadioButton) view.findViewById(R.id.askDoctor_Btn);
         messageBtn= (RadioButton) view.findViewById(R.id.message_Btn);
         alarmBtn= (RadioButton) view.findViewById(R.id.alarm_Btn);
+        bluetoothBtn= (RadioButton) view.findViewById(R.id.bluetooth_Btn);
         updataImage.setOnClickListener(this);
         textBtn1.setOnClickListener(this);
         textBtn2.setOnClickListener(this);
@@ -46,15 +44,23 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
         askDoctorBtn.setOnClickListener(this);
         messageBtn.setOnClickListener(this);
         alarmBtn.setOnClickListener(this);
+        bluetoothBtn.setOnClickListener(this);
     }
+
+
 
     @Override
     protected void loadData() {
 
     }
 
+
     @Override
     protected void initListener() {
+        String data = getActivity().getIntent().getStringExtra("data");
+        String time = getActivity().getIntent().getStringExtra("time");
+        String gaoya = getActivity().getIntent().getStringExtra("gaoya");
+        String diya = getActivity().getIntent().getStringExtra("diya");
 
     }
 
@@ -80,8 +86,12 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
                 break;
             case R.id.alarm_Btn:
                 break;
+            case R.id.bluetooth_Btn:
+                startActivity(new Intent(getActivity(),ClientActivity.class));
+                break;
             default:
                 break;
         }
     }
+
 }

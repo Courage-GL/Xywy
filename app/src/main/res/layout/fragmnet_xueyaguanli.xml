@@ -115,19 +115,16 @@
     </RadioGroup>
     </LinearLayout>
 
-
-    <LinearLayout
+    <TextView
         android:layout_weight="3"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp" />
 
 
-
-    </LinearLayout>
     <RadioGroup
         android:layout_margin="10dp"
         android:layout_weight="1"
-        android:weightSum="3"
+        android:weightSum="4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal">
@@ -158,6 +155,16 @@
             android:gravity="center"
             android:layout_weight="1"
             android:drawableTop="@drawable/remind_icon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <RadioButton
+            android:id="@+id/bluetooth_Btn"
+            android:button="@null"
+            android:text="测血压"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/bluetootch_press"
             android:layout_width="0dp"
             android:layout_height="match_parent" />
     </RadioGroup>
