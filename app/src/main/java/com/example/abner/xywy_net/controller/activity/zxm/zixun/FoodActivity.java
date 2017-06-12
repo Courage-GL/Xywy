@@ -61,7 +61,7 @@ public class FoodActivity   extends BaseActivity {
                     String title = data.get(i).getTitle();
                     String description = data.get(i).getDescription();
                     long pubdate = Long.parseLong(data.get(i).getPubdate());
-                    String date = getFormatedDateTime(pubdate);
+                    String date = getFormatedDateTime(pubdate*1000);
                     CommonBean  commonBean=new CommonBean(title,date,description);
                     mlist.add(commonBean);
                     adapter=new ListAdapter(mlist,FoodActivity.this);

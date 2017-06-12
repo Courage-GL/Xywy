@@ -54,6 +54,7 @@ public class ZiliaoActivity  extends BaseActivity implements View.OnClickListene
         weight.setOnClickListener(this);
         birthday= (RelativeLayout) findViewById(R.id.birthday);
         birthday.setOnClickListener(this);
+        birthText= (TextView) findViewById(R.id.birthText);
     }
 
     @Override
@@ -68,9 +69,9 @@ public class ZiliaoActivity  extends BaseActivity implements View.OnClickListene
         String userid = share.getString("userid", "");
         boolean islogin = share.getBoolean("islogin", false);
         if(islogin){
-//            birthText.setText(birthday+"");
-//            heightText.setText(height);
-//            sexText.setText(sex);
+            birthText.setText(birthday+"");
+            heightText.setText(height+"");
+            sexText.setText(sex);
         }
 
     }

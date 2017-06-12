@@ -1,5 +1,7 @@
 package com.example.abner.xywy_net.controller.activity.zxm;
 
+import android.widget.RelativeLayout;
+
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseActivity;
 
@@ -8,6 +10,7 @@ import com.example.abner.xywy_net.base.BaseActivity;
  */
 
 public class SetActivity   extends BaseActivity{
+    RelativeLayout  clearcache;
     @Override
     protected int layoutId() {
         return R.layout.activity_set;
@@ -15,7 +18,7 @@ public class SetActivity   extends BaseActivity{
 
     @Override
     protected void initView() {
-
+    clearcache= (RelativeLayout) findViewById(R.id.clearcache);
     }
 
     @Override
