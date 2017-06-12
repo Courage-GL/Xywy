@@ -1,9 +1,12 @@
 package com.example.abner.xywy_net.controller.activity.zxm;
 
+import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseActivity;
+import com.example.abner.xywy_net.utils.netutils.DataCleanManager;
 
 /**
  * Created by 张萌 on 2017/6/9.
