@@ -3,6 +3,9 @@ package com.example.abner.xywy_net.controller.fragment.zxm;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -11,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseFragment;
 import com.example.abner.xywy_net.controller.activity.zxm.JiahaoActivity;
@@ -31,6 +36,7 @@ public class PersonaFragment  extends BaseFragment {
     RelativeLayout  jiahao,like,ziliao,messge,shezhi;
     SharedPreferences  share;
     TextView  idText;
+    String  avatar;
     boolean islogin ;
     @Override
     protected int layoutId() {
@@ -65,6 +71,17 @@ public class PersonaFragment  extends BaseFragment {
         super.onResume();
      share=getActivity().getSharedPreferences("logindata", Context.MODE_PRIVATE);
      islogin = share.getBoolean("islogin", false);
+          avatar=share.getString("avatar","");
+        Glide.with(getActivity()).load(avatar).asBitmap().centerCrop().into(new BitmapImageViewTarget(imageview) {
+            @Override
+            protected void setResource(Bitmap resource) {
+                RoundedBitmapDrawable circularBitmapDrawable =
+                        RoundedBitmapDrawableFactory.create(getActivity().getResources(), resource);
+                circularBitmapDrawable.setCircular(true);
+                imageview.setImageDrawable(circularBitmapDrawable);
+            }
+        });
+
         String userid = share.getString("userid", "");
         idText.setText("id"+userid);
         if(islogin){

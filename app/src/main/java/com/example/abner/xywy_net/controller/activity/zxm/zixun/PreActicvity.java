@@ -1,16 +1,19 @@
 package com.example.abner.xywy_net.controller.activity.zxm.zixun;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseActivity;
+import com.example.abner.xywy_net.bean.CoBean;
 import com.example.abner.xywy_net.bean.CommonBean;
 import com.example.abner.xywy_net.bean.CommonNetBean;
 import com.example.abner.xywy_net.utils.netutils.MyCallBack;
@@ -29,7 +32,7 @@ import java.util.List;
 public class PreActicvity  extends BaseActivity {
    String  url="http://api.wws.xywy.com/index.php?act=zixun&fun=getHealthPlazeList&version=version2&tag=zj&sign=2e0d0887581be1c35794ee4c13b00cae&typeid=18033&dir=zhuanti_nk";
     private OkHttpUtils okHttpUtils;
-    List<CommonBean> mlist;
+    List<CoBean> mlist;
     ListAdapter adapter;
     ListView listView;
 
@@ -63,7 +66,8 @@ public class PreActicvity  extends BaseActivity {
                     String description = data.get(i).getDescription();
                     long pubdate = Long.parseLong(data.get(i).getPubdate());
                     String date = getFormatedDateTime(pubdate*1000);
-                    CommonBean commonBean = new CommonBean(title, date, description);
+                    String id = data.get(i).getId();
+                    CoBean commonBean = new CoBean(title, date, description,id);
                     mlist.add(commonBean);
                     adapter = new ListAdapter(mlist,PreActicvity.this);
                     listView.setAdapter(adapter);
@@ -85,10 +89,10 @@ public class PreActicvity  extends BaseActivity {
 
 
     class ListAdapter extends BaseAdapter {
-        List<CommonBean> list;
+        List<CoBean> list;
         Context context;
 
-        public ListAdapter(List<CommonBean> list, Context context) {
+        public ListAdapter(List<CoBean> list, Context context) {
             this.list = list;
             this.context = context;
         }
@@ -121,7 +125,7 @@ public class PreActicvity  extends BaseActivity {
             } else {
                 holder = (Holder) convertView.getTag();
             }
-            CommonBean commonBean = list.get(position);
+            CoBean commonBean = list.get(position);
             holder.title.setText(commonBean.getTitle());
             holder.date.setText(commonBean.getDate());
             holder.body.setText(commonBean.getBody());
@@ -138,6 +142,16 @@ public class PreActicvity  extends BaseActivity {
     }
     @Override
     protected void initListener() {
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(PreActicvity.this,DetailPre.class);
+                intent.putExtra("userid",mlist.get(position).getUserid());
+                intent.putExtra("title",mlist.get(position).getTitle());
+                intent.putExtra("date",mlist.get(position).getDate());
+                intent.putExtra("body",mlist.get(position).getBody());
+                startActivity(intent);
+            }
+        });
     }
 }

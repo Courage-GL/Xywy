@@ -19,10 +19,15 @@ public class App extends Application {
     public static BaseActivity activity;
     public LocationService locationService;
     public Vibrator mVibrator;
+    public static App instance;
+
+    public static Application getInstance() {
+        return instance;
+    }
     @Override
     public void onCreate() {
         super.onCreate();
-
+        instance = this;
         /***
          * 初始化定位sdk，建议在Application中创建
          */

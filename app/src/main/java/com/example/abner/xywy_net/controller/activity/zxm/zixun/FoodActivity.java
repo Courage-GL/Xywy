@@ -1,10 +1,12 @@
 package com.example.abner.xywy_net.controller.activity.zxm.zixun;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -62,7 +64,8 @@ public class FoodActivity   extends BaseActivity {
                     String description = data.get(i).getDescription();
                     long pubdate = Long.parseLong(data.get(i).getPubdate());
                     String date = getFormatedDateTime(pubdate*1000);
-                    CommonBean  commonBean=new CommonBean(title,date,description);
+                    String id = data.get(i).getId();
+                    CommonBean  commonBean=new CommonBean(title,date,description,id);
                     mlist.add(commonBean);
                     adapter=new ListAdapter(mlist,FoodActivity.this);
                     listView.setAdapter(adapter);
@@ -78,7 +81,17 @@ public class FoodActivity   extends BaseActivity {
 
     @Override
     protected void initListener() {
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(FoodActivity.this,DetailCure.class);
+                intent.putExtra("userid",mlist.get(position).getUserid());
+                intent.putExtra("title",mlist.get(position).getTitle());
+                intent.putExtra("date",mlist.get(position).getDate());
+                intent.putExtra("body",mlist.get(position).getBody());
+                startActivity(intent);
+            }
+        });
     }
 
 

@@ -38,7 +38,7 @@
           android:layout_weight="1"
           android:drawableTop="@drawable/hbp_commond_sense"
           android:textSize="20dp"
-          android:text="高血压预防"
+          android:text="高血压常识"
           android:layout_width="0dp"
           android:layout_height="match_parent" />
 
@@ -54,7 +54,7 @@
           android:layout_weight="1"
           android:drawableTop="@drawable/hbp_cookbook"
           android:gravity="center"
-          android:text="高血压治疗"
+          android:text="高血压食谱"
           android:textSize="20dp" />
 
   </LinearLayout>

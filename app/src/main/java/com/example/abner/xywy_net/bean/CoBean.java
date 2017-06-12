@@ -1,14 +1,14 @@
 package com.example.abner.xywy_net.bean;
 
 /**
- * Created by 张萌 on 2017/6/11.
+ * Created by 张萌 on 2017/6/12.
  */
 
-public class CommonBean {
+public class CoBean {
     private String  title;
     private String  date;
     private String  body;
-    private String userid;
+    private String  userid;
 
     public String getUserid() {
         return userid;
@@ -18,17 +18,18 @@ public class CommonBean {
         this.userid = userid;
     }
 
-    public CommonBean(String title, String date, String body, String userid) {
+    public CoBean(String title, String date, String body, String userid) {
         this.title = title;
         this.date = date;
         this.body = body;
         this.userid = userid;
     }
 
-    public CommonBean(String title, String date, String body) {
+    public CoBean(String title, String date, String body) {
         this.title = title;
         this.date = date;
         this.body = body;
+
     }
 
     public String getTitle() {
@@ -54,4 +55,5 @@ public class CommonBean {
     public void setBody(String body) {
         this.body = body;
     }
+
 }

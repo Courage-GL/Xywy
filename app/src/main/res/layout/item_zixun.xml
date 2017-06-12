@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:background="#4dbf5d"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:id="@+id/jiahao_back222"
+            android:src="@drawable/ccoo_icon_back_tran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="文章"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <CheckBox
+            android:id="@+id/zixun_detail_shoucang"
+            android:background="@drawable/shoucang"
+            android:layout_alignParentRight="true"
+            android:layout_width="30dp"
+            android:button="@null"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            android:layout_height="30dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/common_title222"
+        android:text="高血压的人应该注意什么"
+        android:textSize="18sp"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/common_date222"
+        android:text="2017-06-08"
+        android:textColor="#aba6a6"
+        android:layout_marginLeft="5dp"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/common_body222"
+        android:layout_margin="5dp"
+        android:text="多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:background="#d2c7c7"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" />
+
+</LinearLayout>
