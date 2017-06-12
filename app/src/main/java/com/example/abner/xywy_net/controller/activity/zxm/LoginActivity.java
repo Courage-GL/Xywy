@@ -7,6 +7,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,7 @@ public class LoginActivity  extends BaseActivity {
         forget= (TextView) findViewById(forgetpassword);
         phone= (EditText) findViewById(R.id.logon_phone);
         password= (EditText) findViewById(R.id.login_password);
+
     }
 
     @Override
@@ -61,7 +63,7 @@ public class LoginActivity  extends BaseActivity {
               if(TextUtils.isEmpty(phone.getText().toString())||TextUtils.isEmpty(password.getText().toString())){
                   Toast.makeText(LoginActivity.this, "手机号或密码不能为空", Toast.LENGTH_SHORT).show();
               }
-              SharedPreferences  share=getSharedPreferences("logindata",MODE_PRIVATE);
+              SharedPreferences share=getSharedPreferences("logindata",MODE_PRIVATE);
               final SharedPreferences.Editor  editor=share.edit();
               OkHttpUtils  ok=new OkHttpUtils();
               Map<String,String>  map=new HashMap<String, String>();
@@ -75,13 +77,12 @@ public class LoginActivity  extends BaseActivity {
                       LoginBean loginBean = gson.fromJson(result, LoginBean.class);
                       int state = loginBean.getState();
                       if(state==200) {
-//                          Toast.makeText(LoginActivity.this, "您输入的密码或账号有误", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
                           String birthday = loginBean.getBirthday();
                           int height = loginBean.getHeight();
                           String phonenum = loginBean.getPhonenum();
                           String sex = loginBean.getSex();
                           String userid = loginBean.getUserid();
-
                           editor.putBoolean("islogin",true);
                           editor.putString("birthday",birthday);
                           editor.putInt("height",height);

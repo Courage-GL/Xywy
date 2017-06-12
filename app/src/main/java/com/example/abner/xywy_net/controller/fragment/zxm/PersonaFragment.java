@@ -49,8 +49,6 @@ public class PersonaFragment  extends BaseFragment {
         imageview= (ImageView) view.findViewById(R.id.personal_icon111);
         beginlogin= (LinearLayout) view.findViewById(R.id.person_begin);
         afterlogin= (LinearLayout) view.findViewById(R.id.person_after);
-
-
         beginlogin.setVisibility(View.VISIBLE);
         afterlogin.setVisibility(View.GONE);
     }

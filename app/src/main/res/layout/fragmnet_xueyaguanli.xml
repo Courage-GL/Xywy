@@ -114,11 +114,17 @@
                 android:layout_height="match_parent" />
     </RadioGroup>
     </LinearLayout>
-
-    <TextView
+     <LinearLayout
         android:layout_weight="3"
         android:layout_width="match_parent"
-        android:layout_height="0dp" />
+        android:layout_height="0dp"
+         android:orientation="vertical">
+        <com.example.abner.xywy_net.tongjitu.LineView
+            android:id="@+id/LineView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
 
 
     <RadioGroup
