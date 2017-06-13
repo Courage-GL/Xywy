@@ -9,6 +9,7 @@
     <include
         android:id="@+id/myTitle"
         layout="@layout/title_bar"></include>
+
     <FrameLayout
         android:id="@+id/framlayout"
         android:layout_width="match_parent"
@@ -16,8 +17,12 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="match_parent"
+            android:cacheColorHint="#00000000"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:focusableInTouchMode="false">
+w
             <include
                 android:id="@+id/information"
                 layout="@layout/text_list"></include>

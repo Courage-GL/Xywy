@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 
 import com.bumptech.glide.Glide;
+import com.example.abner.xywy_net.R;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -91,7 +92,10 @@ public class ViewHolder {
 
         ImageView img = findViewById(viewId);
         if(img != null)
-            Glide.with(context).load(imgUrl).into(img);
+            Glide.with(context)
+                    .load(imgUrl)
+                    .placeholder(R.drawable.dc)
+                    .into(img);
         return this;
     }
 

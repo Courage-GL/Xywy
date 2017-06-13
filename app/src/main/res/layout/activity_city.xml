@@ -5,7 +5,7 @@
     <RelativeLayout
         android:background="#4dbf5d"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="55dp">
         <ImageView
             android:id="@+id/shoucang_back"
             android:src="@drawable/ccoo_icon_back_tran"
@@ -16,13 +16,17 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
+
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    android:focusableInTouchMode="false">
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content">

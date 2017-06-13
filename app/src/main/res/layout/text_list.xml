@@ -15,7 +15,8 @@
 
         <include
             android:id="@+id/list_info"
-            layout="@layout/text_list_item"></include>
+            layout="@layout/text_list_item">
+        </include>
     </LinearLayout>
     <ImageView
         android:layout_width="match_parent"
@@ -27,6 +28,7 @@
         android:background="@color/colorGraya"
         android:orientation="horizontal">
         <LinearLayout
+            android:id="@+id/free_ask_dc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -56,6 +58,7 @@
     android:layout_height="90dp"
     android:background="@color/colorLineV"/>
         <LinearLayout
+            android:id="@+id/good_people"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -101,6 +104,7 @@
             android:textColor="@color/colorName"/>
 
         <TextView
+            android:id="@+id/huanyihuan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -111,19 +115,22 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/not_net"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center"
+        android:background="@color/aliceblue"
         android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="没有加载出" />
+            android:textSize="16sp"
+            android:text="网络慢 请稍等~~~" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/hot_doctor_lin"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:visibility="gone">
@@ -138,10 +145,12 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/image_line1"
+                android:layout_width="65dp"
+                android:layout_height="75dp"
                 android:src="@drawable/doctor_phone"/>
             <TextView
+                android:id="@+id/text_line1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="美女秀场"/>
@@ -158,10 +167,12 @@
             android:background="@drawable/find_selector_layout"
             android:orientation="vertical">
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/image_line2"
+                android:layout_width="65dp"
+                android:layout_height="75dp"
                 android:src="@drawable/doctor_phone"/>
             <TextView
+                android:id="@+id/text_line2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="热门活动"/>
@@ -170,7 +181,6 @@
 
 
         <LinearLayout
-            android:id="@+id/city_money_choujiang"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -179,10 +189,12 @@
             android:background="@drawable/find_selector_layout"
             android:orientation="vertical">
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/image_line3"
+                android:layout_width="65dp"
+                android:layout_height="75dp"
                 android:src="@drawable/doctor_phone"/>
             <TextView
+                android:id="@+id/text_line3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="城市币抽奖"/>
@@ -191,7 +203,6 @@
 
 
         <LinearLayout
-            android:id="@+id/talk_city"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -200,10 +211,12 @@
             android:background="@drawable/find_selector_layout"
             android:orientation="vertical">
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/image_line4"
+                android:layout_width="65dp"
+                android:layout_height="75dp"
                 android:src="@drawable/doctor_phone"/>
             <TextView
+                android:id="@+id/text_line4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="同城话题"/>

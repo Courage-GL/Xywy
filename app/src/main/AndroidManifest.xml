@@ -60,15 +60,9 @@
         <activity android:name=".controller.activity.zxm.zixun.PreActicvity"/>
         <activity android:name=".controller.activity.zxm.zixun.CheckActivity"/>
         <activity android:name=".controller.activity.zxm.zixun.CureActivity"/>
-        <activity android:name=".controller.activity.zxm.zixun.DetailCommon"/>
-        <activity android:name=".controller.activity.zxm.zixun.DetailPre"/>
-        <activity android:name=".controller.activity.zxm.zixun.DetailCure"/>
-        <activity android:name=".controller.activity.zxm.zixun.DetailFood"/>
-        <activity android:name=".controller.activity.zxm.zixun.DetailCheck"/>
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="1Lolm7ayig7lcEhimXUUtlEwnzzPhhSx" />     <!--  //key:开发者申请的Key-->
-
 
     </application>
 

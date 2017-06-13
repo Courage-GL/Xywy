@@ -73,10 +73,16 @@
      <TextView
          android:id="@+id/text_dc"
          android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="110dp"
+         android:layout_height="45dp"
+         android:layout_marginTop="108dp"
          android:layout_marginLeft="5dp"
+         android:textSize="14sp"
          android:layout_marginRight="5dp"
          android:textColor="@color/colorName"
          android:text="数据的覅时代伏虎寺和尿胆素地府阿富汗刷个啊师父的话合法技术档案"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/colorLine"
+            android:layout_alignParentBottom="true" />
 </RelativeLayout>

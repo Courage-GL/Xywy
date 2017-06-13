@@ -61,6 +61,8 @@
     <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="70dp"
+        android:clickable="true"
+        android:background="@drawable/find_selector_layout"
     android:gravity="center_vertical">
     <TextView
         android:layout_width="wrap_content"
@@ -84,8 +86,11 @@
         android:background="@color/aliceblue"/>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:clickable="true"
+        android:background="@drawable/find_selector_layout"
         android:gravity="center_vertical">
         <TextView
             android:layout_width="wrap_content"
@@ -108,10 +113,14 @@
         android:layout_height="0.5dp"
         android:background="@color/aliceblue"/>
     <RelativeLayout
+        android:id="@+id/search_edit_btn"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:clickable="true"
+        android:background="@drawable/find_selector_layout"
         android:gravity="center_vertical">
         <TextView
+            android:id="@+id/search_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18dp"

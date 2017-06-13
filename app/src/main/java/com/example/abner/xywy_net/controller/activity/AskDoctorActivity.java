@@ -14,7 +14,7 @@ import com.example.abner.xywy_net.base.BaseActivity;
 
 public class AskDoctorActivity extends BaseActivity {
     private TextView askDocotor_Data;
-    private ImageView askDocotor_back;
+    private ImageView imageView_back;
     @Override
     protected int layoutId() {
         return R.layout.activity_askdoctor;
@@ -22,8 +22,21 @@ public class AskDoctorActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        imageView_back = (ImageView) findViewById(R.id.update_back);
         askDocotor_Data= (TextView) findViewById(R.id.askDocotor_Data);
-        askDocotor_back= (ImageView) findViewById(R.id.askdoctor_back);
+        imageView_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        askDocotor_Data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(AskDoctorActivity.this, FreeAskActivity.class));
+            }
+        });
 
     }
 
@@ -39,18 +52,6 @@ public class AskDoctorActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-        askDocotor_Data.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                startActivity(new Intent(AskDoctorActivity.this, FreeAskActivity.class));
-            }
-        });
-        askDocotor_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 }

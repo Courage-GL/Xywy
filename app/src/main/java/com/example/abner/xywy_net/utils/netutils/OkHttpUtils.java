@@ -61,7 +61,6 @@ public  class OkHttpUtils {
                 App.activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
                         callBack.OnError(getClass().getName()+"get"+e.getMessage());
                     }
                 });
@@ -74,7 +73,6 @@ public  class OkHttpUtils {
                 App.activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
                         callBack.OnSuccess(result);
                     }
                 });

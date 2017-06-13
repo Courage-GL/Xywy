@@ -3,13 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/image_dc"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@color/aqua"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
 
     <TextView
         android:id="@+id/name_dc"
@@ -17,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/image_dc"
         android:text="说谎"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="65dp"
         android:layout_marginLeft="10dp"
         android:textColor="@color/colorBlack"
         android:textSize="18sp"/>
@@ -28,7 +21,7 @@
         android:text="华盛顿是多"
         android:textSize="12sp"
         android:textColor="@color/colorText"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="65dp"
         android:layout_toRightOf="@+id/name_dc"
         android:layout_marginLeft="8dp"/>
 
@@ -41,7 +34,7 @@
         android:textSize="14sp"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/image_dc"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="85dp"/>
 
     <TextView
         android:id="@+id/jineng_dc"
@@ -50,7 +43,7 @@
         android:text="心血管内科"
         android:textColor="@color/colorTexts"
         android:textSize="14sp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="85dp"
         android:layout_marginLeft="8dp"
         android:layout_toRightOf="@+id/work_dc"/>
 
@@ -62,14 +55,14 @@
         android:textColor="@color/colorTexts"
         android:textSize="14sp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="85dp"
         android:layout_toRightOf="@+id/jineng_dc"/>
 
     <TextView
         android:id="@+id/text_dc"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="110dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/image_dc"
@@ -78,9 +71,121 @@
 
     <ImageView
         android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorTexts"
+        android:layout_marginTop="203dp"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mViewPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="203.5dp">
+
+    </android.support.v4.view.ViewPager>
+
+    <ImageView
+        android:id="@+id/image_dc"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@color/aqua"
+        android:layout_marginLeft="10dp"
+        android:layout_alignBottom="@+id/text_dc"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout_title"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/limegreen">
+
+        <TextView
+            android:id="@+id/title_name"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:textColor="#fff"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:textSize="22sp"
+            android:text="全部14626位专家" />
+
+        <Button
+            android:id="@+id/btn_back_teacher"
+            android:layout_width="15dp"
+            android:layout_height="30dp"
+            android:background="@drawable/back_img"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
         android:layout_height="8dp"
-        android:layout_marginTop="90dp"
-        android:src="@color/aliceblue"/>
+        android:src="@color/colorTexts"
+        android:layout_below="@+id/text_dc"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/imageView2" />
+
+    <LinearLayout
+        android:id="@+id/ta1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="专家回复"/>
+        </LinearLayout>
+    <ImageView
+        android:layout_width="0.5dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorTexts"/>
+
+        <LinearLayout
+            android:id="@+id/ta2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="出诊时间表"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorTexts"/>
+
+        <LinearLayout
+            android:id="@+id/ta3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="专家经验分享"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
 
 </RelativeLayout>
 
