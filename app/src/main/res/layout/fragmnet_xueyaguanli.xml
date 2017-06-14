@@ -114,18 +114,16 @@
                 android:layout_height="match_parent" />
     </RadioGroup>
     </LinearLayout>
-     <LinearLayout
+    <HorizontalScrollView
         android:layout_weight="3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-         android:orientation="vertical">
-        <com.example.abner.xywy_net.tongjitu.LineView
-            android:id="@+id/LineView"
+        android:scrollbars="none">
+        <RelativeLayout
+            android:id="@+id/rl_linechart"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </LinearLayout>
-
-
+    </HorizontalScrollView>
 
     <RadioGroup
         android:layout_margin="10dp"

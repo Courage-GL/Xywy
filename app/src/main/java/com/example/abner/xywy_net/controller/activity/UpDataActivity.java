@@ -16,8 +16,12 @@ import android.widget.Toast;
 
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseActivity;
+import com.example.abner.xywy_net.bean.Message;
 import com.example.abner.xywy_net.controller.MainActivity;
 import com.example.abner.xywy_net.controller.fragment.XueYaGuanliFragment;
+
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.Calendar;
 
@@ -31,7 +35,6 @@ public class UpDataActivity extends BaseActivity implements View.OnClickListener
     private EditText updata_SheBei,updata_GaoYa,updata_DiYa;
     private Button updata_updata;
      private int year,month,date,hour,minute;
-    private boolean isFirst=true;
     @Override
     protected int layoutId() {
         return R.layout.activity_updata;
@@ -39,6 +42,7 @@ public class UpDataActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void initView() {
+
         updata_updata= (Button) findViewById(R.id.update_update);
         updata_back= (ImageView) findViewById(R.id.update_back);
         updata_Data= (TextView) findViewById(R.id.update_Data);
@@ -108,13 +112,13 @@ public class UpDataActivity extends BaseActivity implements View.OnClickListener
     }
 
     private void updata() {
-
+        Message msg=new Message();
+        msg.setData(updata_Time.getText().toString().trim());
+        msg.setDiya(updata_DiYa.getText().toString().trim());
+        msg.setGaoya(updata_GaoYa.getText().toString().trim());
+        EventBus.getDefault().post(msg);
         Intent intent=new Intent(this, MainActivity.class);
         intent.putExtra("id","2");
-        intent.putExtra("data",year+"-"+month+"-"+date);
-        intent.putExtra("time",hour+":"+minute);
-        intent.putExtra("diya",updata_DiYa.getText().toString().trim());
-        intent.putExtra("gaoya",updata_GaoYa.getText().toString().trim());
         startActivity(intent);
 
     }
@@ -192,5 +196,11 @@ public class UpDataActivity extends BaseActivity implements View.OnClickListener
 
             return true;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
     }
 }

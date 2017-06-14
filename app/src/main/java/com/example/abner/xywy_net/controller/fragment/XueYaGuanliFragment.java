@@ -2,41 +2,59 @@ package com.example.abner.xywy_net.controller.fragment;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseFragment;
+import com.example.abner.xywy_net.bean.Message;
 import com.example.abner.xywy_net.bluetooth.ClientActivity;
+import com.example.abner.xywy_net.controller.activity.AlarmActivity;
 import com.example.abner.xywy_net.controller.activity.AskDoctorActivity;
 import com.example.abner.xywy_net.controller.activity.UpDataActivity;
 import com.example.abner.xywy_net.controller.activity.XueYaZiXunActivity;
 import com.example.abner.xywy_net.tongjitu.LineView;
 
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by Abner on 2017/6/9.
  */
 
 public class XueYaGuanliFragment extends BaseFragment implements View.OnClickListener{
-    private LineView mSkinLineView;
-    private ArrayList<Integer> colorList = new ArrayList<>();//折线的颜色列表
-    private ArrayList<String> XLabel = new ArrayList<>(); //X轴上的标签数据列表
-    private ArrayList<String> YLabel = new ArrayList<>(); //Y轴上的标签数据列表
-    private ArrayList<ArrayList<Integer>> dataLists;//折线上的数据列表
     private ImageView updataImage;
-    private Button shuaXinBtn;
+    private RelativeLayout rlLinechart;
     private RadioButton textBtn1,textBtn2,textBtn3,textBtn4,askDoctorBtn,messageBtn,alarmBtn,bluetoothBtn;
 //
+    private String data,time,week,mounth;
+    private int gaoya,diya,xinlv;
+    private LineView lineView;
+    List<Integer> twoInt;
+    List<Integer> oneInt;
+    List<Integer> lineTwoDate,lineOneDate;
+    List<Integer> yLineDate;
+    List<String> xLineDate;
     @Override
     protected int layoutId() {
         return R.layout.fragmnet_xueyaguanli;
     }
     @Override
     protected void initView(View view) {
+        EventBus.getDefault().register(this);
+        rlLinechart= (RelativeLayout) view.findViewById(R.id.rl_linechart);
         updataImage= (ImageView) view.findViewById(R.id.updateData);
         textBtn1= (RadioButton) view.findViewById(R.id.text_Button1);
         textBtn2= (RadioButton) view.findViewById(R.id.text_Button2);
@@ -55,29 +73,27 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
         messageBtn.setOnClickListener(this);
         alarmBtn.setOnClickListener(this);
         bluetoothBtn.setOnClickListener(this);
-        colorList.add(getResources().getColor(R.color.using_before));
-        colorList.add(getResources().getColor(R.color.using_after));
-        for (int i = 0; i < 10; i++) {
-            XLabel.add(String.valueOf(i));
+        xLineDate = new ArrayList<>();
+        yLineDate = new ArrayList<>();
+        lineOneDate = new ArrayList<>();
+        lineTwoDate = new ArrayList<>();
+         oneInt = new ArrayList<>();
+         twoInt = new ArrayList<>();
+        int[] yInt = {0, 20, 40, 60, 80, 100, 120,140,160,180,200};
+        String[] xString = {"0","周一", "周二", "周三", "周四", "周五", "周六", "周日"};
+
+        for(int m= 0;m<xString.length;m++){
+
+            xLineDate.add(xString[m]);
         }
-        for (int i = 0; i < 11; i++) {
-            YLabel.add(String.valueOf(i * 20));
+        for(int n= 0;n<yInt.length;n++){
+
+            yLineDate.add(yInt[n]);
         }
-        mSkinLineView = (LineView) view.findViewById(R.id.LineView);
-        mSkinLineView.setDataColorList(colorList);
-        mSkinLineView.setXYLabel(XLabel, YLabel); //设置设置X,Y轴的数据
-        mSkinLineView.setShowGrid(true);//true是展示表格,false是显示带箭头的X,Y轴
-//      mSkinLineView.setDottedLine(true); // 表格展示微虚线
-        mSkinLineView.setXYColor(Color.LTGRAY); // X,Y轴线与数据的颜色
-        mSkinLineView.setGridColor(Color.LTGRAY);// 表格的颜色
-        mSkinLineView.setXTextColor(Color.GREEN);
-        mSkinLineView.setYTextColor(Color.BLUE);
-       /* mSkinLineView.setScale(32);//表格中的正方形的单位,默认是32
-        mSkinLineView.setXTextSize(30);  // X轴字体的颜色
-        mSkinLineView.setYTextSize(30); // Y轴字体的颜色
-        mSkinLineView.setXToXTextSpace(20);
-        mSkinLineView.setYToYTextSpace(40);
-        mSkinLineView.setDataColor(Color.BLUE);*/
+
+        huaTu();
+
+
     }
 
     @Override
@@ -86,17 +102,37 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
     }
     @Override
     protected void initListener() {
-        String data = getActivity().getIntent().getStringExtra("data");
-        String time = getActivity().getIntent().getStringExtra("time");
-        String gaoya = getActivity().getIntent().getStringExtra("gaoya");
-        String diya = getActivity().getIntent().getStringExtra("diya");
-        huaTu();
+
+
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void helloEventBus(Message message){
+        gaoya=Integer.parseInt(message.getGaoya());
+        diya= Integer.parseInt(message.getDiya());
+        data= message.getData();
+        time=message.getTime();
+        mounth= message.getMouth();
+        week=message.getWeek();
+        Log.i("aaaaa","-------------------------------");
+        Log.i("aaaaa",gaoya+"");
+        Log.i("aaaaa",diya+"");
+        Log.i("aaaaa","-------------------------------");
+
+        Log.i("time",  System.currentTimeMillis()+"");
+        handler.sendEmptyMessage(0);
+        android.os.Message mmsg=new android.os.Message();
+        mmsg.arg1=gaoya;
+        mmsg.arg2=diya;
+        handler.sendMessage(mmsg);
     }
 
     private void huaTu() {
-
-        randSet();
-
+        for (int i = 0; i < oneInt.size(); i++) {
+            lineOneDate.add(oneInt.get(i));
+            lineTwoDate.add(twoInt.get(i));
+        }
+        lineView= new LineView(getActivity(), lineOneDate, lineTwoDate, xLineDate, yLineDate);
+        rlLinechart.addView(lineView);
     }
 
     @Override
@@ -124,6 +160,7 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
                 startActivity(new Intent(getActivity(), XueYaZiXunActivity.class));
                 break;
             case R.id.alarm_Btn:
+                startActivity(new Intent(getActivity(), AlarmActivity.class));
                 break;
             case R.id.bluetooth_Btn:
                 startActivity(new Intent(getActivity(),ClientActivity.class));
@@ -132,22 +169,29 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
                 break;
         }
     }
-    private void randSet() {
-        dataLists = new ArrayList<>();
-        ArrayList<Integer> dataList1 = new ArrayList<Integer>();
-        int random1 = (int) (Math.random() * 99 + 1);
-        for (int i = 0; i < XLabel.size(); i++) {
-            dataList1.add((int) (Math.random() * random1));
-        }
 
-        ArrayList<Integer> dataList2 = new ArrayList<Integer>();
-        int random2 = (int) (Math.random() * 99 + 1);
-        for (int i = 0; i < XLabel.size(); i++) {
-            dataList2.add((int) (Math.random() * random2));
-        }
-        dataLists.add(dataList1);
-        dataLists.add(dataList2);
-        mSkinLineView.setDataList(dataLists);
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+   Handler handler=new Handler(){
+        @Override
+        public void handleMessage(android.os.Message msg) {
+            super.handleMessage(msg);
+            int i= msg.arg1;
+            int i1 = msg.arg2;
+            oneInt.add(i);
+            twoInt.add(i1);
+            oneInt.add(100);
+            twoInt.add(200);
+            Log.i("aaaaa",i+i1+"");
+            lineView.getData(lineOneDate,lineTwoDate,xLineDate,yLineDate);
+        }
+    };
 }

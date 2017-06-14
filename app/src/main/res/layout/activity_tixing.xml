@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/green1">
+
+        <ImageView
+            android:id="@+id/tixing_back"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/back_img" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="用药提醒"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+        <TextView
+            android:layout_alignParentEnd="true"
+            android:id="@+id/tingxing_add"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="储存"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <TextView
+        android:textSize="20dp"
+        android:gravity="center_vertical"
+        android:text="服药时间"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <TimePicker
+        android:id="@+id/tixing_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></TimePicker>
+    <TextView
+        android:textSize="20dp"
+        android:gravity="center_vertical"
+        android:text="提醒详情"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_weight="1"
+            android:textColor="@color/gray"
+            android:textSize="20dp"
+            android:gravity="center_vertical"
+            android:text="药品名称:"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
+
+        <TextView
+            android:layout_weight="1"
+            android:textColor="@color/gray"
+            android:textSize="20dp"
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_weight="1"
+            android:textColor="@color/gray"
+            android:textSize="20dp"
+            android:gravity="center_vertical"
+            android:text="服用剂量:"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <EditText
+            android:hint="剂量"
+            android:id="@+id/editText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_weight="2"
+            android:textColor="@color/gray"
+            android:textSize="20dp"
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</LinearLayout>

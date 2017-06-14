@@ -10,10 +10,25 @@
         android:layout_alignParentBottom="true">
 
         <Button android:id="@+id/disconnect"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:text="断开"/>
+        <Button android:id="@+id/fasongBtn"
+            android:layout_toRightOf="@id/disconnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开始测量"/>
+        <Button android:id="@+id/huoquShujuBtn"
+            android:layout_toRightOf="@id/fasongBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取数据"/>
+        <Button android:id="@+id/scanBtn"
+            android:layout_toRightOf="@id/huoquShujuBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="扫描"/>
     </RelativeLayout>
 
     <ListView android:id="@+id/list"

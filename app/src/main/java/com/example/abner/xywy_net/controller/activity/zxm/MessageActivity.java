@@ -7,8 +7,8 @@ import android.widget.LinearLayout;
 
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseActivity;
-import com.example.abner.xywy_net.controller.activity.AskDoctorActivity;
 import com.example.abner.xywy_net.controller.activity.FreeAskActivity;
+
 
 /**
  * Created by 张萌 on 2017/6/9.

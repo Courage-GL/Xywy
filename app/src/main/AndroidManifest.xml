@@ -22,6 +22,7 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -60,9 +61,13 @@
         <activity android:name=".controller.activity.zxm.zixun.PreActicvity"/>
         <activity android:name=".controller.activity.zxm.zixun.CheckActivity"/>
         <activity android:name=".controller.activity.zxm.zixun.CureActivity"/>
+        <activity android:name=".controller.activity.AlarmActivity"/>
+        <activity android:name=".controller.activity.TiXingActivity"/>
+        <activity android:name=".controller.activity.ChooseFragmentActivity"/>
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="1Lolm7ayig7lcEhimXUUtlEwnzzPhhSx" />     <!--  //key:开发者申请的Key-->
+
 
     </application>
 

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/freeask_LinearLayout">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -10,7 +11,7 @@
         <ImageView
             android:layout_centerVertical="true"
             android:src="@mipmap/back_img"
-            android:id="@+id/update_back"
+            android:id="@+id/freeask_back"
             android:layout_width="50dp"
             android:layout_height="wrap_content" />
         <TextView
@@ -30,49 +31,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minLines="2"/>
+
     <LinearLayout
 
-       android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@drawable/shape"
         android:orientation="vertical">
-    <EditText
-        android:id="@+id/askDocotor_Editext"
 
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginRight="2dp"
-        android:gravity="top|left"
-        android:hint="请尽量详细描述，描述字数不得少于10个字。"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/white"
-        />
+        <EditText
+            android:id="@+id/data"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/white"
+            android:gravity="top|left"
+            android:hint="请尽量详细描述，描述字数不得少于10个字。" />
+
         <RelativeLayout
 
-            android:layout_marginLeft="2dp"
-            android:layout_marginBottom="2dp"
-            android:layout_marginRight="2dp"
-            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="@color/white">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/add_questin_img" />
+            <GridView
+                android:id="@+id/upload_pictures"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:horizontalSpacing="5dp"
+                android:numColumns="3"
+                android:verticalSpacing="5dp"
+                android:layout_alignParentBottom="true"
+                />
 
             <TextView
-                android:layout_margin="10dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:text="0/500"
+                android:id="@+id/number"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:text="0/500" />
         </RelativeLayout>
 
     </LinearLayout>
@@ -92,18 +98,18 @@
             android:weightSum="2">
 
             <RadioButton
-                android:id="@+id/MainActivity_Button1"
+                android:id="@+id/radioButton1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/backgroud1_selector"
                 android:button="@null"
                 android:checked="true"
-                android:background="@drawable/backgroud1_selector"
                 android:gravity="center"
                 android:text="男" />
 
             <RadioButton
-                android:id="@+id/MainActivity_Button2"
+                android:id="@+id/radioButton2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -115,6 +121,7 @@
         </RadioGroup>
 
         <EditText
+            android:id="@+id/age"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -124,6 +131,7 @@
             android:numeric="integer" />
     </LinearLayout>
     <Button
+        android:id="@+id/commit"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
