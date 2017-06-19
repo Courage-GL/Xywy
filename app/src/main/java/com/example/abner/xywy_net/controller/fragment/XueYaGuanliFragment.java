@@ -36,17 +36,18 @@ import java.util.List;
 
 public class XueYaGuanliFragment extends BaseFragment implements View.OnClickListener{
     private ImageView updataImage;
-    private RelativeLayout rlLinechart;
     private RadioButton textBtn1,textBtn2,textBtn3,textBtn4,askDoctorBtn,messageBtn,alarmBtn,bluetoothBtn;
 //
-    private String data,time,week,mounth;
     private int gaoya,diya,xinlv;
-    private LineView lineView;
-    List<Integer> twoInt;
-    List<Integer> oneInt;
-    List<Integer> lineTwoDate,lineOneDate;
-    List<Integer> yLineDate;
-    List<String> xLineDate;
+    private static LineView mSkinLineView;
+    private ArrayList<Integer> colorList = new ArrayList<>();//折线的颜色列表
+    private ArrayList<String> XLabel = new ArrayList<>(); //X轴上的标签数据列表
+    private ArrayList<String> YLabel = new ArrayList<>(); //Y轴上的标签数据列表
+    private ArrayList<ArrayList<Integer>> dataLists;//折线上的数据列表
+    private ArrayList<Integer> dataList1;
+    private ArrayList<Integer> dataList2;
+    private int i;
+    private int i1;
     @Override
     protected int layoutId() {
         return R.layout.fragmnet_xueyaguanli;
@@ -54,7 +55,7 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
     @Override
     protected void initView(View view) {
         EventBus.getDefault().register(this);
-        rlLinechart= (RelativeLayout) view.findViewById(R.id.rl_linechart);
+        mSkinLineView = (LineView) view.findViewById(R.id.mLineView);
         updataImage= (ImageView) view.findViewById(R.id.updateData);
         textBtn1= (RadioButton) view.findViewById(R.id.text_Button1);
         textBtn2= (RadioButton) view.findViewById(R.id.text_Button2);
@@ -73,27 +74,43 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
         messageBtn.setOnClickListener(this);
         alarmBtn.setOnClickListener(this);
         bluetoothBtn.setOnClickListener(this);
-        xLineDate = new ArrayList<>();
-        yLineDate = new ArrayList<>();
-        lineOneDate = new ArrayList<>();
-        lineTwoDate = new ArrayList<>();
-         oneInt = new ArrayList<>();
-         twoInt = new ArrayList<>();
-        int[] yInt = {0, 20, 40, 60, 80, 100, 120,140,160,180,200};
-        String[] xString = {"0","周一", "周二", "周三", "周四", "周五", "周六", "周日"};
+        initHuaTu();
+    }
 
-        for(int m= 0;m<xString.length;m++){
+    private void initHuaTu() {
 
-            xLineDate.add(xString[m]);
+        colorList.add(getResources().getColor(R.color.using_before));
+        colorList.add(getResources().getColor(R.color.using_after));
+        for (int i = 0; i < 10; i++) {
+            XLabel.add(String.valueOf(i));
         }
-        for(int n= 0;n<yInt.length;n++){
-
-            yLineDate.add(yInt[n]);
+        for (int i = 0; i < 11; i++) {
+            YLabel.add(String.valueOf(i * 20));
         }
 
-        huaTu();
+
+        mSkinLineView.setDataColorList(colorList);
+        mSkinLineView.setXYLabel(XLabel, YLabel); //设置设置X,Y轴的数据
+        mSkinLineView.setShowGrid(false);//true是展示表格,false是显示带箭头的X,Y轴
+//        mSkinLineView.setDottedLine(true); // 表格展示微虚线
+        mSkinLineView.setXYColor(Color.BLUE); // X,Y轴线与数据的颜色
+        mSkinLineView.setGridColor(Color.GREEN);// 表格的颜色
+       /* mSkinLineView.setScale(32);//表格中的正方形的单位,默认是32
+        mSkinLineView.setXTextSize(30);  // X轴字体的颜色
+        mSkinLineView.setYTextSize(30); // Y轴字体的颜色
+        mSkinLineView.setXToXTextSpace(20);
+        mSkinLineView.setYToYTextSpace(40);
+        */
+        mSkinLineView.setXTextColor(Color.RED);
+        mSkinLineView.setYTextColor(Color.RED);
+        mSkinLineView.setDataColor(Color.BLUE);
+        dataLists = new ArrayList<>();
+        dataList1= new ArrayList<Integer>();
+        dataList2 = new ArrayList<Integer>();
+//       randSet();
 
 
+       // mSkinLineView.setDataList(dataLists);
     }
 
     @Override
@@ -109,31 +126,14 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
     public void helloEventBus(Message message){
         gaoya=Integer.parseInt(message.getGaoya());
         diya= Integer.parseInt(message.getDiya());
-        data= message.getData();
-        time=message.getTime();
-        mounth= message.getMouth();
-        week=message.getWeek();
-        Log.i("aaaaa","-------------------------------");
-        Log.i("aaaaa",gaoya+"");
-        Log.i("aaaaa",diya+"");
-        Log.i("aaaaa","-------------------------------");
-
-        Log.i("time",  System.currentTimeMillis()+"");
-        handler.sendEmptyMessage(0);
+     //   handler.sendEmptyMessage(0);
         android.os.Message mmsg=new android.os.Message();
         mmsg.arg1=gaoya;
         mmsg.arg2=diya;
         handler.sendMessage(mmsg);
     }
 
-    private void huaTu() {
-        for (int i = 0; i < oneInt.size(); i++) {
-            lineOneDate.add(oneInt.get(i));
-            lineTwoDate.add(twoInt.get(i));
-        }
-        lineView= new LineView(getActivity(), lineOneDate, lineTwoDate, xLineDate, yLineDate);
-        rlLinechart.addView(lineView);
-    }
+
 
     @Override
     public void onClick(View v) {
@@ -142,16 +142,16 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
                 startActivity(new Intent(getActivity(), UpDataActivity.class));
                 break;
             case R.id.text_Button1:
-                huaTu();
+
                 break;
             case R.id.text_Button2:
-                huaTu();
+
                 break;
             case R.id.text_Button3:
-                huaTu();
+
                 break;
             case R.id.text_Button4:
-                huaTu();
+
                 break;
             case R.id.askDoctor_Btn:
                 startActivity(new Intent(getActivity(), AskDoctorActivity.class));
@@ -184,14 +184,26 @@ public class XueYaGuanliFragment extends BaseFragment implements View.OnClickLis
         @Override
         public void handleMessage(android.os.Message msg) {
             super.handleMessage(msg);
-            int i= msg.arg1;
-            int i1 = msg.arg2;
-            oneInt.add(i);
-            twoInt.add(i1);
-            oneInt.add(100);
-            twoInt.add(200);
-            Log.i("aaaaa",i+i1+"");
-            lineView.getData(lineOneDate,lineTwoDate,xLineDate,yLineDate);
+             i= msg.arg1;
+             i1 = msg.arg2;
+            Log.i("abcccc",i+"");
+            Log.i("abcccc",i1+"");
+
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    randSet();
+                }
+            });
+
         }
     };
+
+    private void randSet() {
+        dataList1.add(i);
+        dataList2.add(i1);
+        dataLists.add(dataList1);
+        dataLists.add(dataList2);
+        mSkinLineView.setDataList(dataLists);
+    }
 }

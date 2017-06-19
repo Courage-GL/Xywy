@@ -117,9 +117,12 @@ public class UpDataActivity extends BaseActivity implements View.OnClickListener
         msg.setDiya(updata_DiYa.getText().toString().trim());
         msg.setGaoya(updata_GaoYa.getText().toString().trim());
         EventBus.getDefault().post(msg);
-        Intent intent=new Intent(this, MainActivity.class);
-        intent.putExtra("id","2");
-        startActivity(intent);
+
+        finish();
+
+//        Intent intent=new Intent(this, MainActivity.class);
+//        intent.putExtra("id","2");
+//        startActivity(intent);
 
     }
 

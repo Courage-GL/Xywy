@@ -4,27 +4,38 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseActivity;
+import com.example.abner.xywy_net.tongjitu.TiaoXingtu;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Set;
+import java.util.Timer;
 import java.util.UUID;
 
 public class ClientActivity extends BaseActivity implements OnItemClickListener,View.OnClickListener{
@@ -39,8 +50,10 @@ public class ClientActivity extends BaseActivity implements OnItemClickListener,
 	private BluetoothSocket socket;     // 客户端socket
 	private ClientThread mClientThread; // 客户端运行线程
 	private ReadThread mReadThread;     // 读取流线程
-	private int gaoya,diya,xinlv,zhuangtaizhi;
-	private String result;
+	private byte[] data;
+	private int gaoya,diya,xinlv;
+	private TiaoXingtu tiaoxingtu;
+    private int[][] columnInfo;
 	@Override
 	protected int layoutId() {
 		return R.layout.activity_bluetooth;
@@ -50,6 +63,7 @@ public class ClientActivity extends BaseActivity implements OnItemClickListener,
 	protected void initView() {
 		// TODO Auto-generated method stub
 		mContext = this;
+		//获取蓝牙适配器
 		mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 		list = new ArrayList<ChatMessage>();
 		clientAdapter = new ClientAdapter(mContext, list);
@@ -57,7 +71,6 @@ public class ClientActivity extends BaseActivity implements OnItemClickListener,
 		mListView.setFastScrollEnabled(true);
 		mListView.setAdapter(clientAdapter);
 		mListView.setOnItemClickListener(this);
-
 		// 注册receiver监听
 		IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
 		registerReceiver(mReceiver, filter);
@@ -87,6 +100,25 @@ public class ClientActivity extends BaseActivity implements OnItemClickListener,
 		scanBtn= (Button) findViewById(R.id.scanBtn);
 		scanBtn.setOnClickListener(this);
 	}
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		if (mBluetoothAdapter != null) {
+			if (!mBluetoothAdapter.isEnabled()) {
+				// 发送打开蓝牙的意图，系统会弹出一个提示对话框
+				Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+				startActivityForResult(enableIntent, RESULT_FIRST_USER);
+				// 设置蓝牙的可见性，最大值3600秒，默认120秒，0表示永远可见(作为客户端，可见性可以不设置，服务端必须要设置)
+				Intent displayIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+				displayIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
+				startActivity(displayIntent);
+
+				// 直接打开蓝牙
+				mBluetoothAdapter.enable();
+			}
+		}
+	}
 
 	@Override
 	protected void initData() {
@@ -103,32 +135,12 @@ public class ClientActivity extends BaseActivity implements OnItemClickListener,
 
 	}
 
-	@Override
-	protected void onStart() {
-		// TODO Auto-generated method stub
-		super.onStart();
-		if (mBluetoothAdapter != null) {
-			if (!mBluetoothAdapter.isEnabled()) {
-				// 发送打开蓝牙的意图，系统会弹出一个提示对话框
-        		Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-        		startActivityForResult(enableIntent, RESULT_FIRST_USER);
-
-        		// 设置蓝牙的可见性，最大值3600秒，默认120秒，0表示永远可见(作为客户端，可见性可以不设置，服务端必须要设置)
-        		Intent displayIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-        		displayIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
-        		startActivity(displayIntent);
-
-        		// 直接打开蓝牙
-        		mBluetoothAdapter.enable();
-			}
-		}
-	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-
+		scanDevice();
 	}
 
 	/**
@@ -150,8 +162,7 @@ public class ClientActivity extends BaseActivity implements OnItemClickListener,
 
                 // If it's already paired, skip it, because it's been listed already
                 // 如果这个设备是不曾配对过的，添加到list列表
-                if (device.getBondState() != BluetoothDevice.BOND_BONDED)
-                {
+                if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
                 	list.add(new ChatMessage(device.getName() + "\n" + device.getAddress(), false));
                 	clientAdapter.notifyDataSetChanged();
             		mListView.setSelection(list.size() - 1);
@@ -170,15 +181,30 @@ public class ClientActivity extends BaseActivity implements OnItemClickListener,
             }
         }
     };
+  
 
     // Handler更新UI
     private Handler LinkDetectedHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
         	//Toast.makeText(mContext, (String)msg.obj, Toast.LENGTH_SHORT).show();
-        	if(msg.what==1)
-        	{
-        		list.add(new ChatMessage(msg.obj.toString(), true));
+        	if(msg.what==1) {
+        		data= (byte[]) msg.obj;
+				if(data.length==13){
+					if (data[5]==0) {
+						gaoya = data[6];
+						diya = data[8];
+						xinlv = data[10];
+						showMultiBtnDialog();
+						com.example.abner.xywy_net.bean.Message msg2=new com.example.abner.xywy_net.bean.Message();
+						msg2.setDiya(diya+"");
+						msg2.setGaoya(gaoya+"");
+						EventBus.getDefault().post(msg);
+					}
+				}else {
+
+					Toast.makeText(mContext, "开始测量", Toast.LENGTH_SHORT).show();
+				}
         	}
         	else
         	{
@@ -186,20 +212,10 @@ public class ClientActivity extends BaseActivity implements OnItemClickListener,
         	}
 			clientAdapter.notifyDataSetChanged();
 			mListView.setSelection(list.size() - 1);
-
         }
 
     };
 
-    // 当连接上服务器的时候才可以选择发送数据和断开连接
-    private Handler refreshUI = new Handler() {
-    	public void handleMessage(Message msg) {
-    		if (msg.what == 0) {
-    			disconnect.setEnabled(true);
-
-			}
-    	}
-    };
 
 	@Override
 	public void onClick(View v) {
@@ -214,13 +230,13 @@ public class ClientActivity extends BaseActivity implements OnItemClickListener,
 			case R.id.fasongBtn:
 				sendMessageHandler(BlueToothContion.START_MEASURE);
 				break;
-			case R.id.huoquShujuBtn:
-				sendMessageHandler(BlueToothContion.GET_REUSLT);
-				Toast.makeText(mContext, "获取数据", Toast.LENGTH_SHORT).show();
-				break;
 			case R.id.scanBtn:
 				// 扫描
 				scanDevice();
+				break;
+			case R.id.huoquShujuBtn:
+				sendMessageHandler(BlueToothContion.GET_REUSLT);
+
 				break;
 		}
 
@@ -228,7 +244,7 @@ public class ClientActivity extends BaseActivity implements OnItemClickListener,
 	// 发送数据
 	private void sendMessageHandler(byte[] bytes) {
 		if (socket == null) {
-			Toast.makeText(mContext, "没有可用的连接", Toast.LENGTH_SHORT).show();
+			Toast.makeText(ClientActivity.this, "没有可用的连接", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		try {
@@ -244,23 +260,21 @@ public class ClientActivity extends BaseActivity implements OnItemClickListener,
 	}
 	// 开启客户端连接服务端
     private class ClientThread extends Thread {
-    	@Override
-    	public void run() {
-    		// TODO Auto-generated method stub
-    		if (device != null) {
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			if (device != null) {
 				try {
-					socket = device.createRfcommSocketToServiceRecord(UUID.fromString(BlueToothContion.UUID));
+					socket = device.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
 					// 连接
 					Message msg = new Message();
 					msg.obj = "请稍候，正在连接服务器: "+ BluetoothMsg.BlueToothAddress;
 					msg.what = 0;
 					LinkDetectedHandler.sendMessage(msg);
-
 					// 通过socket连接服务器，这是一个阻塞过程，直到连接建立或者连接失效
 					socket.connect();
-
 					Message msg2 = new Message();
-					msg2.obj = "已经连接上服务端！可以获取数据";
+					msg2.obj = "已经连接上服务端！可以发送信息";
 					msg2.what = 0;
 					LinkDetectedHandler.sendMessage(msg2);
 
@@ -281,8 +295,10 @@ public class ClientActivity extends BaseActivity implements OnItemClickListener,
 					LinkDetectedHandler.sendMessage(msg);
 				}
 			}
-    	}
+		}
     }
+
+
 
     // 通过socket获取InputStream流
     private class ReadThread extends Thread {
@@ -300,17 +316,13 @@ public class ClientActivity extends BaseActivity implements OnItemClickListener,
 			}
     		while(true) {
     			try {
-					StringBuffer sb=null;
 					if ((bytes = is.read(buffer)) > 0) {
-						sb=new StringBuffer();
-						byte[] data = new byte[bytes];
+						 data = new byte[bytes];
 						for (int i = 0; i < data.length; i++) {
 							data[i] = buffer[i];
-							sb.append(data[i]);
-							Log.i("aaaaa",data[i]+"");
 						}
 						Message msg = new Message();
-						msg.obj =sb.toString();
+						msg.obj =data;
 						msg.what = 1;
 						LinkDetectedHandler.sendMessage(msg);
 					}
@@ -361,7 +373,6 @@ public class ClientActivity extends BaseActivity implements OnItemClickListener,
 		} else {
 			list.clear();
 			clientAdapter.notifyDataSetChanged();
-
 			// 每次扫描前都先判断一下是否存在已经配对过的设备
 			Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
 			if (pairedDevices.size() > 0) {
@@ -391,7 +402,6 @@ public class ClientActivity extends BaseActivity implements OnItemClickListener,
 		// 停止扫描
 		// BluetoothAdapter.startDiscovery()很耗资源，在尝试配对前必须中止它
 		mBluetoothAdapter.cancelDiscovery();
-
 		// 通过Mac地址去尝试连接一个设备
 		device = mBluetoothAdapter.getRemoteDevice(BluetoothMsg.BlueToothAddress);
 		mClientThread = new ClientThread();
@@ -406,10 +416,44 @@ public class ClientActivity extends BaseActivity implements OnItemClickListener,
 		super.onDestroy();
 		if (mBluetoothAdapter != null) {
 			mBluetoothAdapter.cancelDiscovery();
-			// 关闭蓝牙
+			//关闭蓝牙
 			mBluetoothAdapter.disable();
 		}
 		unregisterReceiver(mReceiver);
 		closeClient();
 	}
+
+
+	private void showMultiBtnDialog(){
+		final AlertDialog.Builder customizeDialog =
+				new AlertDialog.Builder(this);
+		final View dialogView = LayoutInflater.from(this)
+				.inflate(R.layout.dialog_xueya,null);
+		tiaoxingtu= (TiaoXingtu) dialogView.findViewById(R.id.TiaoXingtu);
+		HuaTu();
+		customizeDialog.setTitle("结果");
+		customizeDialog.setView(dialogView);
+		customizeDialog.setPositiveButton("确定",
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+					}
+				});
+		customizeDialog.show();
+	}
+	private void HuaTu(){
+		columnInfo= new int[][]{{gaoya, Color.BLUE},{diya, Color.GREEN},{xinlv, Color.RED}};
+		tiaoxingtu.setColumnInfo(columnInfo);
+	}
+
+
+	// 当连接上服务器的时候才可以选择发送数据和断开连接
+	private Handler refreshUI = new Handler() {
+		public void handleMessage(Message msg) {
+			if (msg.what == 0) {
+				disconnect.setEnabled(true);
+			}
+		}
+	};
 }
