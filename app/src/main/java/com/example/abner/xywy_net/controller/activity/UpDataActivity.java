@@ -20,7 +20,6 @@ import com.example.abner.xywy_net.bean.Message;
 import com.example.abner.xywy_net.controller.MainActivity;
 import com.example.abner.xywy_net.controller.fragment.XueYaGuanliFragment;
 
-
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.Calendar;

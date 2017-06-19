@@ -3,9 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<com.example.abner.xywy_net.controller.activity.AleView
+<com.example.abner.xywy_net.controller.activity.KeChengBiaoView
+    android:id="@+id/kechengbiao"
     android:layout_width="match_parent"
-    android:layout_height="200dp" />
+    android:layout_height="match_parent" />
 
 
 </LinearLayout>

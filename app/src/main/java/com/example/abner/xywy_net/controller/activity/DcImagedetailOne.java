@@ -21,12 +21,14 @@ import com.example.abner.xywy_net.controller.fragment.Zhuanjiafragment;
  */
 
 public class DcImagedetailOne extends BaseActivity implements View.OnClickListener{
+
     private FragmentTransaction fragmentTransaction;
     private FragmentManager fragmentManager;
     private ImageView dc_image;
     private TextView dc_name,dc_hospital,dc_zhiwei,dc_jineng,dc_tail,title_name;
     private Button back_btn;
     private FrameLayout framlayout;
+    private KeChengBiaoView keChengBiaoView;
 
     @Override
     protected int layoutId() {
@@ -37,7 +39,7 @@ public class DcImagedetailOne extends BaseActivity implements View.OnClickListen
     protected void initView() {
 
         fragmentManager =  getFragmentManager();
-
+        keChengBiaoView = (KeChengBiaoView) findViewById(R.id.kechengbiao);
         framlayout = (FrameLayout) findViewById(R.id.framlayout);
         back_btn = (Button) findViewById(R.id.btn_back_teacher);
         title_name = (TextView) findViewById(R.id.title_name);

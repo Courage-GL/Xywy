@@ -8,6 +8,8 @@ import android.graphics.PorterDuff;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +29,7 @@ public class AleView extends View {
     private int height;
     private int widths;
     private int heights;
+    private ViewGroup.LayoutParams params;
     public String[] Data = {"一", "二", "三", "四", "五", "六", "七"};
     public String[] Time = {"上午", "下午", "晚上"};
     private Map<String, Integer> map;
@@ -97,25 +100,25 @@ public class AleView extends View {
         int  sunday=0;
         int   type=0;
         switch (sun){
-            case  "星期一":
+            case  "一":
                 sunday=1;
                 break;
-            case  "星期二":
+            case  "二":
                 sunday=2;
                 break;
-            case  "星期三":
+            case  "三":
                 sunday=3;
                 break;
-            case  "星期四":
+            case  "四":
                 sunday=4;
                 break;
-            case  "星期五":
+            case  "五":
                 sunday=5;
                 break;
-            case  "星期六":
+            case  "六":
                 sunday=6;
                 break;
-            case  "星期七":
+            case  "七":
                 sunday=7;
                 break;
 
@@ -154,7 +157,7 @@ public class AleView extends View {
      */
     private void addView(int sunday, int type) {
 
-        // map.put(String.valueOf(sunday) + String.valueOf(type), getChildCount());
+        //map.put(String.valueOf(sunday) + String.valueOf(type), getChildCount());
         //这个view的左边距等于 你输入的星期几 乘以 每个view的宽度
         int left = widths * sunday;
         //这里每个view的上边距为 你输入的时间 乘以每个子view的高度
@@ -162,7 +165,7 @@ public class AleView extends View {
 
 
         TextView textView = new TextView(context);
-        //textView.setLayoutParams(params);
+        textView.setLayoutParams(params);
         textView.setTextSize(15);
         textView.setText("专家");
         textView.setBackgroundColor(Color.parseColor("#16DCC7"));

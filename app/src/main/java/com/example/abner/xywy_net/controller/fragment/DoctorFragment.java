@@ -35,6 +35,7 @@ import com.example.abner.xywy_net.PullToRefreshRecycleView;
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.adapter.DoctorAdapter;
 import com.example.abner.xywy_net.base.BaseFragment;
+import com.example.abner.xywy_net.controller.activity.AleView;
 import com.example.abner.xywy_net.controller.activity.AskDoctorActivity;
 import com.example.abner.xywy_net.controller.activity.DcImagedetailOne;
 import com.example.abner.xywy_net.controller.activity.DcImagedetailThree;
@@ -42,6 +43,7 @@ import com.example.abner.xywy_net.controller.activity.DcImagedetailTwo;
 import com.example.abner.xywy_net.controller.activity.DcImagedetailfour;
 import com.example.abner.xywy_net.controller.activity.DoctorActivity;
 import com.example.abner.xywy_net.controller.activity.Findactivity;
+import com.example.abner.xywy_net.controller.activity.KeChengBiaoView;
 import com.example.abner.xywy_net.controller.activity.MyPopupwindow;
 import com.example.abner.xywy_net.controller.activity.zxm.CityActivity;
 import com.example.abner.xywy_net.controller.activity.zxm.baidumap.LocationService;
@@ -69,7 +71,6 @@ public class DoctorFragment extends BaseFragment implements View.OnClickListener
     private ImageView  mine_location;
     private TextView  main_loc_meaage;
     private LinearLayout choose_city;
-
     private LinearLayout mlinearLayout;
     private RelativeLayout relativeLayout,search_edit_btn,re_hospital;
     private ImageView imageView1,imageView2,imageView3,imageView4;
@@ -137,6 +138,8 @@ public class DoctorFragment extends BaseFragment implements View.OnClickListener
             RetrofitImpl.getInstance().get(HotDcBean.class, Params.URL, map, new HttpCallBack() {
 
 
+                private String substringTime;
+                private String substring;
                 private String app_image3;
                 private String app_image2;
                 private String app_image1;
@@ -153,8 +156,23 @@ public class DoctorFragment extends BaseFragment implements View.OnClickListener
 
                     String menzhen = dataBean.getData().get(0).getMenzhen();
 
-                    String substring = menzhen.substring(9,10);
-                    String substringTime = menzhen.substring(4,6);
+                    substring = menzhen.substring(9,10);
+                    substringTime = menzhen.substring(4,6);
+
+                    String menzhen1 = dataBean.getData().get(1).getMenzhen();
+
+                    substring = menzhen1.substring(9,10);
+                    substringTime = menzhen1.substring(4,6);
+
+
+
+                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("kcb",MODE_PRIVATE);
+                    SharedPreferences.Editor edit = sharedPreferences.edit();
+                    edit.putString("substring",substring);
+                    edit.putString("substringTime",substringTime);
+                    edit.commit();
+
+
                     Log.d("DoctorFragment", substring);
                     Log.d("DoctorFragment", substringTime);
 
