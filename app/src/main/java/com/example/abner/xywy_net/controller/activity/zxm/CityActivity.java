@@ -3,6 +3,7 @@ package com.example.abner.xywy_net.controller.activity.zxm;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,12 +34,12 @@ public class CityActivity  extends BaseActivity {
 
     @Override
     protected void initView() {
-     listView= (ListView) findViewById(R.id.citylistview);
+        listView= (ListView) findViewById(R.id.citylistview);
     }
 
     @Override
     protected void initData() {
-    mlist=new ArrayList<>();
+        mlist=new ArrayList<>();
         mlist.add("不限");
         mlist.add("北京市");
         mlist.add("山东省");
@@ -81,21 +82,25 @@ public class CityActivity  extends BaseActivity {
 
     @Override
     protected void initListener() {
-      listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-          @Override
-          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-              String s = mlist.get(position);
-              Intent  intent=new Intent();
-              intent.putExtra("s",s);
-              intent.setClass(CityActivity.this, DoctorFragment.class);
-              setResult(100,intent);
-              finish();
-//              SharedPreferences  sharedPreferences=getSharedPreferences("data",MODE_PRIVATE);
-//              SharedPreferences.Editor  editor=sharedPreferences.edit();
-//              editor.putString("s",s);
-//              editor.commit();
-          }
-      });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String province = mlist.get(position);
+                Intent  intent=new Intent();
+                intent.putExtra("s",province);
+                Log.i("iii",province);
+                intent.setClass(CityActivity.this, DoctorFragment.class);
+                setResult(100,intent);
+
+
+                SharedPreferences sp = getSharedPreferences("dc_data",Context.MODE_PRIVATE);
+                SharedPreferences.Editor edit = sp.edit();
+                edit.putString("province",province);
+                edit.commit();
+
+                finish();
+            }
+        });
     }
 
     class ListAdapter  extends BaseAdapter{
@@ -142,6 +147,5 @@ public class CityActivity  extends BaseActivity {
             TextView  textView;
         }
     }
-
 
 }

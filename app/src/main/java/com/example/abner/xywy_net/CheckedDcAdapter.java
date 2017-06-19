@@ -1,47 +1,49 @@
-package com.example.abner.xywy_net.adapter;
+package com.example.abner.xywy_net;
+
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
+import android.widget.ImageView;
 
-import com.example.abner.xywy_net.R;
-import com.example.abner.xywy_net.base.CommonAdapter;
-import com.example.abner.xywy_net.base.ViewHolder;
+import com.androidkun.adapter.BaseAdapter;
+import com.androidkun.adapter.ViewHolder;
+import com.bumptech.glide.Glide;
 import com.example.abner.xywy_net.controller.activity.YuyueZhuanjiaActivity;
 import com.example.abner.xywy_net.entity.DcBean;
 
 import java.util.List;
 
 /**
- * Created by think on 2017/6/10.
+ * Created by think on 2017/6/16.
  */
 
-public class DoctorAdapter extends CommonAdapter<DcBean.DataBean> {
+public class CheckedDcAdapter extends BaseAdapter<DcBean.DataBean> {
 
-    private List<DcBean.DataBean> datas;
     private Context context;
-    public DoctorAdapter(Context context, List<DcBean.DataBean> datas) {
-        super(context, datas, R.layout.listview_item_doctor);
-        this.datas = datas;
+    private List<DcBean.DataBean> datas;
+
+    public CheckedDcAdapter(Context context, List<DcBean.DataBean> datas) {
+        super(context, R.layout.listview_item_doctor, datas);
         this.context = context;
+        this.datas = datas;
     }
 
     @Override
-    public void display(ViewHolder holder, DcBean.DataBean dataBean) {
-        View convertView = holder.getConvertView();
-        View viewById = convertView.findViewById(R.id.free_addnumber);
+    public void convert(ViewHolder holder, DcBean.DataBean dataBean) {
 
-                viewById.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(context, YuyueZhuanjiaActivity.class);
-                        context.startActivity(intent);
-                    }
-                });
-
+        ImageView imageViewadd = holder.getView(R.id.free_addnumber);
+        imageViewadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, YuyueZhuanjiaActivity.class);
+                context.startActivity(intent);
+            }
+        });
         String app_image = dataBean.getApp_image();
-        holder.setImage(R.id.image_dc,app_image);
+        ImageView imageView = holder.getView(R.id.image_dc);
+        Glide.with(context).load(app_image).into(imageView);
         String name = dataBean.getName();
         holder.setText(R.id.name_dc,name);
         String hospital = dataBean.getHospital();
@@ -65,8 +67,5 @@ public class DoctorAdapter extends CommonAdapter<DcBean.DataBean> {
         edit.putString("hospital",hospital);
         edit.putString("goodat",goodat);
         edit.commit();
-
-
-
     }
 }

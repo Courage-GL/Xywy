@@ -13,6 +13,7 @@ import com.example.abner.xywy_net.base.BaseActivity;
  */
 
 public class AskDoctorActivity extends BaseActivity {
+
     private TextView askDocotor_Data;
     private ImageView imageView_back;
     @Override

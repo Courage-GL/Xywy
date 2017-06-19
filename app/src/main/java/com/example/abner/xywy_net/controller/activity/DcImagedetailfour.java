@@ -1,5 +1,7 @@
 package com.example.abner.xywy_net.controller.activity;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -8,12 +10,17 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseActivity;
+import com.example.abner.xywy_net.controller.fragment.Zhuanjiafragment;
 
 /**
  * Created by think on 2017/6/12.
  */
 
 public class DcImagedetailfour extends BaseActivity implements View.OnClickListener {
+
+    private FragmentTransaction fragmentTransaction;
+    private FragmentManager fragmentManager;
+
     private ImageView dc_image;
     private TextView dc_name,dc_hospital,dc_zhiwei,dc_jineng,dc_tail,title_name;
     private Button back_btn;
@@ -33,7 +40,7 @@ public class DcImagedetailfour extends BaseActivity implements View.OnClickListe
         dc_jineng = (TextView) findViewById(R.id.jineng_dc);
         dc_zhiwei = (TextView) findViewById(R.id.zhiwei_dc);
         dc_tail = (TextView) findViewById(R.id.text_dc);
-
+        fragmentManager =  getFragmentManager();
     }
 
     @Override
@@ -57,7 +64,10 @@ public class DcImagedetailfour extends BaseActivity implements View.OnClickListe
 
     @Override
     protected void loadData() {
-
+        Zhuanjiafragment zhuanjiafragment = new Zhuanjiafragment();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.framlayout, zhuanjiafragment);
+        fragmentTransaction.commit();
     }
 
     @Override

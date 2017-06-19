@@ -39,7 +39,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".controller.MainActivity"/>
-        <activity android:name=".controller.activity.DoctorActivity"></activity>
+        <activity android:name=".controller.activity.Findactivity"></activity>
+        <activity android:name=".controller.activity.DcImagedetailOne"></activity>
+        <activity android:name=".controller.activity.DcImagedetailTwo"></activity>
+        <activity android:name=".controller.activity.DcImagedetailThree"></activity>
+        <activity android:name=".controller.activity.DcImagedetailfour"></activity>
+        <activity android:name=".PullToRefreshRecycleView"></activity>
         <activity android:name=".controller.activity.UpDataActivity"/>
         <activity android:name=".controller.activity.AskDoctorActivity"/>
         <activity android:name=".controller.activity.FreeAskActivity"/>
@@ -55,6 +60,7 @@
         <activity android:name=".controller.activity.zxm.MessageActivity"/>
         <activity android:name=".controller.activity.zxm.CityActivity"/>
         <activity android:name=".bluetooth.ClientActivity"/>
+        <activity android:name=".controller.activity.YuyueZhuanjiaActivity"></activity>
 
         <activity android:name=".controller.activity.zxm.zixun.CommonmsgActivity"/>
         <activity android:name=".controller.activity.zxm.zixun.FoodActivity"/>

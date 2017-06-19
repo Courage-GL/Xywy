@@ -22,7 +22,7 @@
             android:overScrollMode="never"
             android:scrollbars="none"
             android:focusableInTouchMode="false">
-w
+
             <include
                 android:id="@+id/information"
                 layout="@layout/text_list"></include>

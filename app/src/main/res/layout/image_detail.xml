@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <TextView
@@ -69,19 +70,19 @@
         android:textColor="@color/colorName"
         android:text="数据的覅时代伏虎寺和尿胆素地府阿富汗刷个啊师父的话合法技术档案"/>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/colorTexts"
-        android:layout_marginTop="203dp"/>
+   <FrameLayout
+       android:id="@+id/framlayout"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_below="@+id/imageView2">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/mViewPage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="203.5dp">
 
-    </android.support.v4.view.ViewPager>
+
+   </FrameLayout>
+
+
+
+
 
     <ImageView
         android:id="@+id/image_dc"
@@ -124,67 +125,15 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="8dp"
-        android:src="@color/colorTexts"
+        android:src="@color/colorText"
         android:layout_below="@+id/text_dc"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/imageView2" />
 
-    <LinearLayout
-        android:id="@+id/ta1"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_below="@+id/imageView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_weight="1">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="专家回复"/>
-        </LinearLayout>
-    <ImageView
-        android:layout_width="0.5dp"
-        android:layout_height="match_parent"
-        android:background="@color/colorTexts"/>
 
-        <LinearLayout
-            android:id="@+id/ta2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_weight="1">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="出诊时间表"/>
-        </LinearLayout>
-        <ImageView
-            android:layout_width="0.5dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorTexts"/>
-
-        <LinearLayout
-            android:id="@+id/ta3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="专家经验分享"/>
-        </LinearLayout>
-
-    </LinearLayout>
 
 
 </RelativeLayout>

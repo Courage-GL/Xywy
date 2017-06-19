@@ -1,5 +1,6 @@
 package com.example.abner.xywy_net.controller.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.EditText;
@@ -9,6 +10,8 @@ import android.widget.Toast;
 
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.base.BaseActivity;
+import com.example.abner.xywy_net.base.FragmentBuilder;
+import com.example.abner.xywy_net.controller.fragment.DoctorFragment;
 
 /**
  * Created by think on 2017/6/13.
@@ -50,7 +53,8 @@ public class Findactivity extends BaseActivity {
                 if(editText.getText().toString().equals("")){
                     Toast.makeText(Findactivity.this, "关键字不能为空~", Toast.LENGTH_SHORT).show();
                 }else{
-                    SharedPreferences sp = getSharedPreferences("searchData",MODE_PRIVATE);
+                    String Key = editText.getText().toString();
+                    SharedPreferences sp = getSharedPreferences("findkey",MODE_PRIVATE);
                     SharedPreferences.Editor edit = sp.edit();
                     edit.putString("content",editText.getText().toString());
                     edit.commit();

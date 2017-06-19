@@ -1,34 +1,33 @@
 package com.example.abner.xywy_net.controller.activity;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
+
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.example.abner.xywy_net.R;
-import com.example.abner.xywy_net.adapter.ViewpagerAdapter;
 import com.example.abner.xywy_net.base.BaseActivity;
+import com.example.abner.xywy_net.controller.fragment.Zhuanjiafragment;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by think on 2017/6/12.
  */
 
 public class DcImagedetailOne extends BaseActivity implements View.OnClickListener{
+    private FragmentTransaction fragmentTransaction;
+    private FragmentManager fragmentManager;
     private ImageView dc_image;
     private TextView dc_name,dc_hospital,dc_zhiwei,dc_jineng,dc_tail,title_name;
     private Button back_btn;
-    private ViewPager viewPager;
-    private ViewpagerAdapter adapter;
-    private List<Fragment> datas;
-    private LinearLayout t1,t2,t3;
+    private FrameLayout framlayout;
+
     @Override
     protected int layoutId() {
         return R.layout.image_detail;
@@ -36,10 +35,10 @@ public class DcImagedetailOne extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void initView() {
-        t1 = (LinearLayout) findViewById(R.id.ta1);
-        t2 = (LinearLayout) findViewById(R.id.ta2);
-        t3 = (LinearLayout) findViewById(R.id.ta3);
-        viewPager = (ViewPager) findViewById(R.id.mViewPage);
+
+        fragmentManager =  getFragmentManager();
+
+        framlayout = (FrameLayout) findViewById(R.id.framlayout);
         back_btn = (Button) findViewById(R.id.btn_back_teacher);
         title_name = (TextView) findViewById(R.id.title_name);
         dc_image = (ImageView) findViewById(R.id.image_dc);
@@ -54,9 +53,7 @@ public class DcImagedetailOne extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void initData() {
-        datas = new ArrayList<>();
-        adapter = new ViewpagerAdapter(getSupportFragmentManager(),datas);
-        viewPager.setAdapter(adapter);
+
         String image = getIntent().getStringExtra("image");
         Glide.with(this).load(image).into(dc_image);
         String name = getIntent().getStringExtra("name");
@@ -72,19 +69,25 @@ public class DcImagedetailOne extends BaseActivity implements View.OnClickListen
         String text = getIntent().getStringExtra("text");
         dc_tail.setText(text);
         title_name.setText(name);
+        String expert_id = getIntent().getStringExtra("expert_id");
+        SharedPreferences sp = getSharedPreferences("b1",MODE_PRIVATE);
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putString("expert_id",expert_id);
+        edit.commit();
+
     }
 
     @Override
     protected void loadData() {
-
+        Zhuanjiafragment zhuanjiafragment = new Zhuanjiafragment();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.framlayout, zhuanjiafragment);
+        fragmentTransaction.commit();
     }
 
     @Override
     protected void initListener() {
         back_btn.setOnClickListener(this);
-        t1.setOnClickListener(this);
-        t2.setOnClickListener(this);
-        t3.setOnClickListener(this);
     }
 
     @Override
@@ -93,12 +96,8 @@ public class DcImagedetailOne extends BaseActivity implements View.OnClickListen
             case R.id.btn_back_teacher:
                 onBackPressed();
                 break;
-            case R.id.ta1:
-                break;
-            case R.id.ta2:
-                break;
-            case R.id.ta3:
-                break;
+
         }
     }
 }
+

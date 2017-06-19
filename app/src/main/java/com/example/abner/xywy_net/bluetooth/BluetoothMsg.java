@@ -2,14 +2,14 @@ package com.example.abner.xywy_net.bluetooth;
 
 /*
  * 
- * @author   liaohongfei
+ * @author liaohongfei
  * 
  * @Date  2015 2015-1-27  上午9:53:52
  * 
  */
 public class BluetoothMsg {
 
-	/** 
+	 /**
      * 蓝牙连接类型 
      * @author liao 
      * 

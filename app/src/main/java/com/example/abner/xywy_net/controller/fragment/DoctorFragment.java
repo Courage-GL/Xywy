@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,10 +26,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidkun.PullToRefreshRecyclerView;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.bumptech.glide.Glide;
 import com.example.abner.xywy_net.App;
+import com.example.abner.xywy_net.PullToRefreshRecycleView;
 import com.example.abner.xywy_net.R;
 import com.example.abner.xywy_net.adapter.DoctorAdapter;
 import com.example.abner.xywy_net.base.BaseFragment;
@@ -51,7 +54,9 @@ import com.example.abner.xywy_net.utils.netutils.ForNet;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.R.id.content;
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by think on 2017/6/9.
@@ -66,14 +71,15 @@ public class DoctorFragment extends BaseFragment implements View.OnClickListener
     private LinearLayout choose_city;
 
     private LinearLayout mlinearLayout;
-    private RelativeLayout relativeLayout,search_edit_btn;
+    private RelativeLayout relativeLayout,search_edit_btn,re_hospital;
     private ImageView imageView1,imageView2,imageView3,imageView4;
-    private TextView textView1,textView2,textView3,textView4;
+    private TextView textView1,textView2,textView3,textView4,textView_hospital,textView_teacher;
     private TextView huanyihuan;
     private int pageNum = 1;
     private Dialog dialog;
     private TextView search_text;
     private LinearLayout linearLayout_hot,not_net_hot,free_ask_dc_lin,good_people_lin;
+
 
     @Override
     protected int layoutId() {
@@ -82,6 +88,9 @@ public class DoctorFragment extends BaseFragment implements View.OnClickListener
 
     @Override
     protected void initView(View view) {
+        textView_teacher = (TextView) view.findViewById(R.id.textView_teacher);
+        textView_hospital = (TextView) view.findViewById(R.id.textView_hospital);
+        re_hospital = (RelativeLayout) view.findViewById(R.id.re_hospital);
         mine_location= (ImageView) view.findViewById(R.id.mine_location);
         main_loc_meaage = (TextView) view.findViewById(R.id.main_loc_meaage);
         choose_city= (LinearLayout) view.findViewById(R.id.choose_city);
@@ -142,6 +151,18 @@ public class DoctorFragment extends BaseFragment implements View.OnClickListener
                     String name2 = dataBean.getData().get(2).getName();
                     String name3 = dataBean.getData().get(3).getName();
 
+                    String menzhen = dataBean.getData().get(0).getMenzhen();
+
+                    String substring = menzhen.substring(9,10);
+                    String substringTime = menzhen.substring(4,6);
+                    Log.d("DoctorFragment", substring);
+                    Log.d("DoctorFragment", substringTime);
+
+                    final String expert_id = dataBean.getData().get(0).getExpert_id();
+                    final String expert_id1 = dataBean.getData().get(1).getExpert_id();
+                    final String expert_id2 = dataBean.getData().get(2).getExpert_id();
+                    final String expert_id3 = dataBean.getData().get(3).getExpert_id();
+
                     textView1.setText(name);
                     textView2.setText(name1);
                     textView3.setText(name2);
@@ -166,6 +187,7 @@ public class DoctorFragment extends BaseFragment implements View.OnClickListener
                             intent_image1.putExtra("depart", dataBean.getData().get(0).getDepart());
                             intent_image1.putExtra("teach", dataBean.getData().get(0).getTeach());
                             intent_image1.putExtra("text", dataBean.getData().get(0).getGoodat());
+                            intent_image1.putExtra("expert_id",expert_id);
                             startActivity(intent_image1);
                         }
                     });
@@ -181,6 +203,7 @@ public class DoctorFragment extends BaseFragment implements View.OnClickListener
                             intent_image2.putExtra("depart", dataBean.getData().get(1).getDepart());
                             intent_image2.putExtra("teach", dataBean.getData().get(1).getTeach());
                             intent_image2.putExtra("text", dataBean.getData().get(1).getGoodat());
+                            intent_image2.putExtra("expert_id1",expert_id1);
                             startActivity(intent_image2);
                         }
                     });
@@ -196,6 +219,7 @@ public class DoctorFragment extends BaseFragment implements View.OnClickListener
                             intent_image3.putExtra("depart", dataBean.getData().get(2).getDepart());
                             intent_image3.putExtra("teach", dataBean.getData().get(2).getTeach());
                             intent_image3.putExtra("text", dataBean.getData().get(2).getGoodat());
+                            intent_image3.putExtra("expert_id2",expert_id2);
                             startActivity(intent_image3);
                         }
                     });
@@ -212,18 +236,22 @@ public class DoctorFragment extends BaseFragment implements View.OnClickListener
                             intent_image4.putExtra("depart", dataBean.getData().get(3).getDepart());
                             intent_image4.putExtra("teach", dataBean.getData().get(3).getTeach());
                             intent_image4.putExtra("text", dataBean.getData().get(3).getGoodat());
+                            intent_image4.putExtra("expert_id3",expert_id3);
                             startActivity(intent_image4);
+
                         }
                     });
 
+
                     //显示
                     linearLayout_hot.setVisibility(View.VISIBLE);
-                    SharedPreferences sp = getActivity().getSharedPreferences("searchData",Context.MODE_PRIVATE);
+                    SharedPreferences sp = getActivity().getSharedPreferences("findkey",MODE_PRIVATE);
                     String content = sp.getString("content", "");
-                    Log.d("DoctorFragment", content);
-                    search_text.setText(content);
-                    SharedPreferences.Editor edit = sp.edit();
-                    edit.clear();
+
+                    if(content != null){
+                        search_text.setText(content);
+                        sp.edit().clear();
+                    }
 
                 }
 
@@ -238,6 +266,7 @@ public class DoctorFragment extends BaseFragment implements View.OnClickListener
 
     @Override
     protected void initListener() {
+        re_hospital.setOnClickListener(this);
         free_ask_dc_lin.setOnClickListener(this);
         good_people_lin.setOnClickListener(this);
         mlinearLayout.setOnClickListener(this);
@@ -248,6 +277,8 @@ public class DoctorFragment extends BaseFragment implements View.OnClickListener
         search_edit_btn.setOnClickListener(this);
     }
 
+
+    //健康顾问
     private void showPhoneDialog(){
 
         View view2 = LayoutInflater.from(getActivity()).inflate(R.layout.isloc,null);
@@ -274,52 +305,100 @@ public class DoctorFragment extends BaseFragment implements View.OnClickListener
             dialog.show();
     }
 
-    private PopupWindow popupWindow;
-    private View popupWindowView;
-
-    private void showPopuwindowDialog() {
-
-        popupWindowView =LayoutInflater.from(getActivity()).inflate(R.layout.hos_popuwindow, null);
-        popupWindow = new PopupWindow(popupWindowView, android.app.ActionBar.LayoutParams.MATCH_PARENT, android.app.ActionBar.LayoutParams.MATCH_PARENT,true);
-        popupWindow.setBackgroundDrawable(new BitmapDrawable());
-        //设置PopupWindow的弹出和消失效果
-        popupWindow.setAnimationStyle(R.style.AppTheme);
 
 
+        //医院等级
+        private void showListDialog() {
+            final String[] items = { "不限","三级甲等","三级乙等","三级丙等","三级","二级甲等","二级乙等","二级丙等" };
+            AlertDialog.Builder listDialog =
+                    new AlertDialog.Builder(getActivity());
+            listDialog.setTitle("医院等级");
+            listDialog.setItems(items, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    String item = items[which];
+                    Toast.makeText(getActivity(),
+                            "你点击了" + items[which],
+                            Toast.LENGTH_SHORT).show();
+                    textView_hospital.setText(item);
+
+                }
+            });
+            listDialog.show();
+        }
+
+
+    //医院职称
+    private void showListDialog2() {
+
+        final String[] items = { "不限","主任医师","副主任医师","主任医师","医师" };
+        AlertDialog.Builder listDialog =
+                new AlertDialog.Builder(getActivity());
+        listDialog.setTitle("医院职称");
+        listDialog.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // which 下标从0开始
+                // ...To-do
+                String item = items[which];
+                Toast.makeText(getActivity(),
+                        "你点击了" + items[which],
+                        Toast.LENGTH_SHORT).show();
+                textView_teacher.setText(item);
+
+            }
+        });
+        listDialog.show();
     }
+
+
+
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            //关键字查询
             case R.id.search_edit_btn:
                 Intent intentseaech = new Intent(getActivity(), Findactivity.class);
                 startActivity(intentseaech);
                 break;
+            //查询专家
             case R.id.check_dc:
-                Intent intent_dc = new Intent(getActivity(), DoctorActivity.class);
+                Intent intent_dc = new Intent(getActivity(), PullToRefreshRecycleView.class);
                 startActivity(intent_dc);
                 break;
+            //医院等级
             case R.id.relativeLayout:
-                showPopuwindowDialog();
+                showListDialog();
                 break;
+            //换一换
             case R.id.huanyihuan:
                 pageNum++;
                 loadData();
                 break;
-            case R.id.free_ask_dc://免费问医生
+            //免费问医生
+            case R.id.free_ask_dc:
                 Intent intentfree = new Intent(getActivity(), AskDoctorActivity.class);
                 startActivity(intentfree);
                 break;
-            case R.id.good_people://健康顾问
+            //健康顾问
+            case R.id.good_people:
                 showPhoneDialog();
                 break;
+            //定位
             case R.id.mine_location:
                 showCustomizeDialog();
                 break;
+            //选择城市
             case R.id.choose_city:
                 Intent  intent=new Intent(getActivity(), CityActivity.class);
                 startActivityForResult(intent,200);
+                break;
+            //医院职称
+            case R.id.re_hospital:
+                showListDialog2();
                 break;
         }
     }

@@ -127,6 +127,7 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:text="网络慢 请稍等~~~" />
+
     </LinearLayout>
 
     <LinearLayout
